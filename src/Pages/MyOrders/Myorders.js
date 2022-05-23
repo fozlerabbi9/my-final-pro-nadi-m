@@ -44,7 +44,7 @@ const Myorders = () => {
                     <tbody>
 
                         {
-                            products?.result?.map((product,index)=><Orders key={product._id} refetch={refetch} isLoading={isLoading} product={product} index={index} ></Orders>)
+                           !products?.result?.map ? <Loading></Loading> : products?.result?.map((product,index)=><Orders key={product._id} refetch={refetch} isLoading={isLoading} product={product} index={index} ></Orders>)
                         }
 
                     </tbody>
