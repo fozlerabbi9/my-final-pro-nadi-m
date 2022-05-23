@@ -1,0 +1,49 @@
+[
+    {
+        "id": 1,
+        "name": "Chopsaw",
+        "price": "300",
+        "description": "PowerHouse 355 mm Chop saw Machine PHCM355 with 1 Year Warranty",
+        "img": "https://i.ibb.co/drxhgBh/Chopsaw.jpg",
+        "minimum":"50",
+        "available": "78"
+    },
+    {
+        "id": 2,
+        "name": "Hot_Air_Guns",
+        "price": "100",
+        "description": "Stanley 2000W Heat Gun, STXH2000",
+        "img": "https://i.ibb.co/TqZDNYL/hot-air-guns.jpg",
+        "minimum":"50",
+        "available": "78"
+    },
+    {
+        "id": 3,
+        "name": "Miter-Saw",
+        "price": "150",
+        "description": "Hi-Max Miter Saw Speed 6000 RPM IC-094",
+        "img": "https://i.ibb.co/qg7SBrC/miter-saw-16264.jpg",
+        "minimum":"50",
+        "available": "78"
+    },
+	 {
+        "id": 4,
+        "name": "Rotary_Hammer",
+        "price": "150",
+        "description": "Tiger TGP-220 600 W 850 RPM Rotary hammer",
+        "img": "https://i.ibb.co/xGgdwk3/rotary-hammer.jpg",
+        "minimum":"50",
+        "available": "78"
+    }
+	,
+	 {
+        "id": 4,
+        "name": "Sander_Polisher",
+        "price": "150",
+        "description": "Makita mt M9201B Finishing Sander 12000 opm",
+        "img": "https://i.ibb.co/z2XxybY/Sander-Polisher.jpg",
+        "minimum":"50",
+        "available": "78"
+    }
+    
+]

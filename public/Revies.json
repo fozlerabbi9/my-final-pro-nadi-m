@@ -1,0 +1,53 @@
+[
+    {
+      "id": 1,
+      "name": "maribel602flores",
+      "comment": "Beautiful product! Very small. I brought a set for my partner and I for our anniversary in a few weeks.",
+      "img": "https://img.freepik.com/free-photo/portrait-african-american-man_23-2149072214.jpg?w=740&t=st=1649000594~exp=1649001194~hmac=89a3ce980058b9155dfed6c02e1ce94e48b06c00f4085f40bf1dbfc6bdb33881",
+      "rating": "4.5"
+    },
+    {
+      "id": 2,
+      "name": "shaquitabeverly",
+      "comment":"Super cute!!! Great quality and the customer service is amazing. My anklet was accidentally sent in the wrong color but the shop owner immediately sent out the correct order!",
+      "img": "https://img.freepik.com/free-photo/confident-young-man_1098-20868.jpg?w=740&t=st=1649000629~exp=1649001229~hmac=ff8cfb637fdfa754d8f73bfa00d74b58726ffcc55f5b83c47819e405c7d56a86",
+      "rating": "5"
+    },
+    {
+      "id": 3,
+      "name": "Autumn McGowan",
+      "comment":"I ordered this puzzle for Mother's Day abd my mom finally finished it so I wanted to leave a review with the picture! She loved it so much! ",
+      "img": "https://img.freepik.com/free-photo/cheerful-young-caucasian-businessman_171337-727.jpg?w=740&t=st=1649000653~exp=1649001253~hmac=ef5bf2e7c62203357831e17ebc7e1461c596e878c4f0695ca8fec4216793c429",
+      "rating": "5"
+    },
+    {
+      "id": 4,
+      "name": "andressa",
+      "comment":"The product is beautiful and amazing quality. Have to add that they have the best customer service that I have ever had. Would definitely recommend this to everyone!",
+      "img": "https://img.freepik.com/free-photo/indoor-shot-beautiful-happy-african-american-woman-smiling-cheerfully-keeping-her-arms-folded-relaxing-indoors-after-morning-lectures-university_273609-1270.jpg?w=740&t=st=1649000681~exp=1649001281~hmac=ff5300bce5960cd458a0b7b69e1de47711603383533aa03f0ae44ac9d1e66bbd",
+      "rating": "5"
+    },
+    {
+      "id": 5,
+      "name": "Marnie S.",
+      "comment":"Amazing jewellery and fantastic customer service. I Recently lost my dog so thought it would be a nice idea to get a charm for my mum for Christmas with a photograph of my dog. ",
+      "img": "https://img.freepik.com/free-photo/red-haired-serious-young-man-blogger-looks-confidently_273609-16730.jpg?w=740&t=st=1649000729~exp=1649001329~hmac=563b9024f3f0c0964fa696ae081fa6532777dd55cfa015ebc757ff2e07c027eb",
+      "rating": "5"
+    },
+    {
+      "id": 6,
+      "name": "Arlinn p.",
+      "comment":"Great picture I choose to remember my daughter it is great didn’t take long for shipping either.",
+      "img":"https://img.freepik.com/free-photo/portrait-joyful-young-man-white-shirt_171337-17467.jpg?w=740&t=st=1649000761~exp=1649001361~hmac=b0fc7ae7e7489dc1d2e4e8dacc85d4c782cacab0692d3e802ffbe3f4093d0d40",
+      "rating": "4"
+    },
+    {
+      "id": 7,
+      "name": "Boussekine O.",
+      "comment":"I really like it is solidly made and the quality of the picture is great.",
+      "img": "https://img.freepik.com/free-photo/amused-pretty-girl-with-curly-afro-hair-raises-palms-has-cheerful-expression-smiles-broadly-sees-something-funny-wears-white-sweater_273609-43437.jpg?w=740&t=st=1649000792~exp=1649001392~hmac=51164b91f67f19379c0d6c09e5d7a1726dbfe374bfac5d3b0d146fc78403f019",
+      "rating": "70"
+    }
+   
+  ]
+  
