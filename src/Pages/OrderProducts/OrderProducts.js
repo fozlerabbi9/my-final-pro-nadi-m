@@ -1,13 +1,16 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import auth from '../../firebase.init';
 import Loading from '../../Shared/Loading';
 
 const OrderProducts = () => {
     const [price, setPrice] = useState(0)
+    const [user] = useAuthState(auth)
     const [inputQuentity, setInputQuentity] = useState(0)
     const { register, handleSubmit, reset } = useForm();
     const { id } = useParams()
@@ -41,11 +44,12 @@ const OrderProducts = () => {
                 if (data.error) {
                     toast.error(data.error)
                     reset()
-                    setPrice(0)
+                    setPrice()
                 }
                 else {
                     const fulldetails = {
                         name:name,
+                        email:user?.email,
                         address: address,
                         phone: phone,
                         productname: product.result.name,
@@ -57,13 +61,14 @@ const OrderProducts = () => {
                         .then(res => {
                             console.log(res);
                             reset()
-                            setPrice(0)
+                            setPrice((+ product.result.minimum) * (+ product.result.price))
                         })
                     }
                 refetch()
             })
+            
 
-
+           
 
 
     }
@@ -106,6 +111,13 @@ const OrderProducts = () => {
                                     </div>
                                     <div class="form-control">
                                         <label class="label">
+                                            <span class="label-text">Your Mail</span>
+
+                                        </label>
+                                        <input {...register("email")} type="text" value={user?.email} readOnly disabled class="input input-bordered" />
+                                    </div>
+                                    <div class="form-control">
+                                        <label class="label">
                                             <span class="label-text">Address</span>
 
                                         </label>
@@ -125,7 +137,7 @@ const OrderProducts = () => {
                                             <span class="label-text">Order Quentity</span>
 
                                         </label>
-                                        <input onChange={(event) => priceUpdate(event)} type="number" placeholder="Minimum Order 50 pcs" class="input input-bordered" />
+                                        <input onChange={(event) => priceUpdate(event)} type="number" placeholder="Minimum Order 50 pcs" class="input input-bordered"/>
 
                                     </div>
                                     <div class="form-control">

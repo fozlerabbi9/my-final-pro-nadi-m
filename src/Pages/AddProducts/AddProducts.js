@@ -23,7 +23,6 @@ const AddProducts = () => {
                         price: price,
                         description: description,
                         img: image,
-                        minimum: minimum,
                         available: available
                     }
                     axios.post("http://localhost:4000/addproducts",productsDetails)
@@ -68,14 +67,6 @@ const AddProducts = () => {
 
                                     </label>
                                     <input {...register("description")} type="text" placeholder="description" class="input input-bordered" />
-
-                                </div>
-                                <div class="form-control">
-                                    <label class="label">
-                                        <span class="label-text">minimum</span>
-
-                                    </label>
-                                    <input {...register("minimum")} type="number" placeholder="minimum" class="input input-bordered" />
 
                                 </div>
                                 <div class="form-control">
