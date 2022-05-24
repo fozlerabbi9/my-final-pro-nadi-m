@@ -10,7 +10,20 @@ const Orders = ({product,index,refetch,isLoading}) => {
         
         return <Loading></Loading>
     }
-   
+    const deleteButton=(id)=>{
+        const proced = window.confirm("Are You Agree For Delete ?")
+        if (proced) {
+            const url = `http://localhost:4000/products/${id}`
+            fetch(url, {
+                method: "DELETE"
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+
+                })
+        }
+    }
     console.log(product);
     return (
         <tr>
@@ -19,8 +32,9 @@ const Orders = ({product,index,refetch,isLoading}) => {
         <td>{product.totalquentity}</td>
         <td>${product.totalprice}</td>
     {product.payment === "paid" ? <Link to={''}><td><button  class="btn btn-sm btn-success">Paid</button></td></Link> :<Link to={`/dashboard/payment/${_id}`}><td><button class="btn btn-sm btn-warning">Pay</button></td></Link>}
-        
+    <Link to={''}><td><button onClick={()=>deleteButton(_id)} class="btn btn-sm btn-warning" >Cancel</button></td></Link>   
     </tr>
+    
     );
 };
 

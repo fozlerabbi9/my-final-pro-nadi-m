@@ -42,7 +42,7 @@ console.log(user);
                             <th>Product Name</th>
                             <th>Total Qty</th>
                             <th>Total Price</th>
-                            <th>Payment</th>
+                            <th style={{width:"230px"}}>Payment</th>
                         </tr>
                     </thead>}
                     <tbody>
