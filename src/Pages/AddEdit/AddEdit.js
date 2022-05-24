@@ -16,11 +16,7 @@ const AddEdit = () => {
     const [updateDone, setUpdateDone] = useState("")
     const [currentUser, setCurrentUser] = useState({})
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
-    // const { isLoading, error, data: currentUser ,refetch } = useQuery('user', () =>
-    //     fetch(`http://localhost:4000/user?email=${user?.email}`)
-    //     .then(res =>res.json())
-    //     )
-    //     refetch()
+    
     axios.get(`http://localhost:4000/user?email=${user?.email}`)
         .then(res => {
             setCurrentUser(res.data);
@@ -35,7 +31,10 @@ const AddEdit = () => {
     const onSubmit = data => {
         console.log(data);
         const { name, email, address, phone } = data
-        const image = data.image[0]
+        let image
+        if(data.image){
+            return image=data?.image[0]
+        }
         var formData = new FormData();
         formData.append("image", image)
         if (currentUser?.img) {
@@ -89,7 +88,7 @@ const AddEdit = () => {
             axios.post("https://api.imgbb.com/1/upload?key=d7cb843332a0859336d56fe2ea07decf", formData)
                 .then(res => {
                     if (res.data.success) {
-                        const image = res.data.data.display_url
+                        const image = res?.data?.data?.display_url
                         console.log(image)
                         const userDetails = {
                             name: name,
@@ -187,6 +186,8 @@ const AddEdit = () => {
                                             <input
                                                 type="email"
                                                 placeholder="Your Email"
+                                                
+                                                readOnly
                                                 value={user?.email}
                                                 className="input input-bordered w-full max-w-xs"
                                                 {...register("email", {
@@ -212,25 +213,27 @@ const AddEdit = () => {
                                             {!edit ? <input
                                                 type="text"
                                                 placeholder="Your Address"
+                                                value={currentUser?.address}
                                                 disabled
                                                 readOnly
                                                 className="input input-bordered w-full max-w-xs"
                                                 {...register("address", {
                                                     required: {
                                                         value: true,
-                                                        message: 'Name is Required'
+                                                        message: 'Address is Required'
                                                     }
                                                 })}
                                             /> : updateDone ? <input
                                                 type="text"
                                                 placeholder="Your Address"
+                                                value={currentUser?.address}
                                                 disabled
                                                 readOnly
                                                 className="input input-bordered w-full max-w-xs"
                                                 {...register("address", {
                                                     required: {
                                                         value: true,
-                                                        message: 'Name is Required'
+                                                        message: 'Address is Required'
                                                     }
                                                 })}
                                             /> : <input
@@ -240,7 +243,7 @@ const AddEdit = () => {
                                                 {...register("address", {
                                                     required: {
                                                         value: true,
-                                                        message: 'Name is Required'
+                                                        message: 'Address is Required'
                                                     }
                                                 })}
                                             />}
@@ -252,17 +255,43 @@ const AddEdit = () => {
                                             <label className="label">
                                                 <span className="label-text">Phone</span>
                                             </label>
-                                            <input
+                                            {!edit ? <input
+                                                type="number"
+                                                placeholder="Your Name"
+                                                value={currentUser?.phone}
+                                                disabled
+                                                readOnly
+                                                className="input input-bordered w-full max-w-xs"
+                                                {...register("phone", {
+                                                    required: {
+                                                        value: true,
+                                                        message: 'Phone Number is Required'
+                                                    }
+                                                })}
+                                            /> : updateDone ? <input
+                                                type="number"
+                                                placeholder="Your Name"
+                                                value={currentUser?.phone}
+                                                disabled
+                                                readOnly
+                                                className="input input-bordered w-full max-w-xs"
+                                                {...register("phone", {
+                                                    required: {
+                                                        value: true,
+                                                        message: 'Phone Number is Required'
+                                                    }
+                                                })}
+                                            /> : <input
                                                 type="number"
                                                 placeholder="Your Name"
                                                 className="input input-bordered w-full max-w-xs"
                                                 {...register("phone", {
                                                     required: {
                                                         value: true,
-                                                        message: 'Name is Required'
+                                                        message: 'Phone Number is Required'
                                                     }
                                                 })}
-                                            />
+                                            />}
                                             <label className="label">
                                                 {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
                                             </label>
@@ -271,10 +300,9 @@ const AddEdit = () => {
                                             <label class="label">
                                                 <span class="label-text">Upload Your Image</span>
                                             </label>
-                                            <input {...register("image")} type="file" placeholder="Upload file" class="input input-bordered" />
-                                            {/* <label className="label">
-                                                {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
-                                            </label> */}
+                                            {!edit ? <input disabled
+                                                readOnly {...register("image")} type="file" placeholder="Upload file" class="input input-bordered" /> : updateDone ? <input disabled
+                                                readOnly {...register("image")} type="file" placeholder="Upload file" class="input input-bordered" /> : <input {...register("image")} type="file" placeholder="Upload file" class="input input-bordered" />}
 
                                         </div>
                                         {!edit ? <input disabled readOnly className='btn w-full max-w-xs text-primary' type="submit" value="Update Profile" /> : updateDone ? <input disabled readOnly className='btn w-full max-w-xs text-primary' type="submit" value="Update Profile" /> : <input className='btn w-full max-w-xs text-primary' type="submit" value="Update Profile" />}
