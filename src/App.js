@@ -35,6 +35,7 @@ function App() {
         </Requireauth>}></Route>
         <Route path='/dashboard' element={<Dashboard></Dashboard>}>
           <Route path='/dashboard/users' element={<Users></Users>}></Route>
+          <Route path='/dashboard/myorders' element={<Myorders></Myorders>}></Route>
         </Route>
         <Route path='/dashboard/payment/:id' element={<Payment></Payment>}></Route>
         <Route path='myorders' element={<Myorders></Myorders>}></Route>

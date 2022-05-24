@@ -11,6 +11,7 @@ import Loading from '../../Shared/Loading';
 
 const OrderProducts = () => {
     const [price, setPrice] = useState(0)
+    const [minimumOrder,setMinimumOrder] = useState("")
     const [validateError,setValidateError] = useState()
     const [user] = useAuthState(auth)
     const [inputQuentity, setInputQuentity] = useState(0)
@@ -37,6 +38,7 @@ const OrderProducts = () => {
         }
         if(inputQuentity<20){
             console.log(inputQuentity);
+            setMinimumOrder("Minimum Order 20 pcs !!")
             return toast.error("Minimum Order 20 pcs !!")
         }
         else{
@@ -70,6 +72,7 @@ const OrderProducts = () => {
                         productname: product.result.name,
                         img: product.result.img,
                         price: product.result.price,
+                        totalquentity : inputQuentity,
                         totalprice: + price
                     }
                     axios.post("http://localhost:4000/orders", fulldetails)
@@ -101,14 +104,14 @@ const OrderProducts = () => {
             <div class="hero-content flex-col lg:flex-row">
                 <div class="card bg-base-100 shadow-xl" style={{ height: '100%',width:"36rem" }}>
                     <figure class="px-10 pt-10">
-                        <img src={product.result.img} alt="Shoes" class="rounded-xl" />
+                        <img src={product?.result?.img} alt="Shoes" class="rounded-xl" />
                     </figure>
                     <div class="card-body items-center text-center">
                         <h2 class="card-title">{product.name}</h2>
-                        <p>{product.result.description}</p>
-                        <p>Price: ${product.result.price}</p>
-                        <p>Minimum Order: {product.result.minimum} Pcs</p>
-                        <p>Stock: {product.result.available} Pcs</p>
+                        <p>{product?.result?.description}</p>
+                        <p>Price: ${product?.result?.price}</p>
+                        <p>Minimum Order: {product?.result?.Minimumorder} Pcs</p>
+                        {product?.result?.available<=0? <p className='text-red-600 font-bold'>Stock Out</p> : <p>Stock: {product?.result?.available} Pcs</p>}
                     </div>
                 </div>
                 <div class="hero bg-base-200">
@@ -168,9 +171,9 @@ const OrderProducts = () => {
                                         <input {...register("Price")} type="number" value={price} readOnly disabled class="input input-bordered" />
 
                                     </div>
-                                    <div class="form-control mt-6">
-                                        <button type='submit' class="btn btn-primary bg-blue-500" >Place Order</button>
-                                    </div>
+                                    {<div  class="form-control mt-6">
+                                        <button disabled={product?.result?.available==0} type='submit' class="btn btn-primary bg-blue-500" >Place Order</button>
+                                    </div>}
                                 </div>
                             </form>
                         </div>

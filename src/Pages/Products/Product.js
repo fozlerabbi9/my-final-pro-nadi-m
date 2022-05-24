@@ -14,7 +14,7 @@ const Product = ({ product,refetch }) => {
                     <h2 class="card-title">{product.name}</h2>
                     <p>{product.description}</p>
                     <p>Price: ${product.price}</p>
-                    <p>Minimum Order: {product.minimum} Pcs</p>
+                    <p>Minimum Order: {product.Minimumorder} Pcs</p>
                     {product.available === 0 ? <span className='text-red-600 font-bold'>Stock Out</span> :<p>Stock: {product.available} Pcs</p>}
                     <div class="card-actions">   
                         <Link to={product.available === 0 ? "" : `/orderproducts/${_id}`}><button disabled={product.available === 0} class="btn btn-primary">Buy Now</button><td></td></Link>

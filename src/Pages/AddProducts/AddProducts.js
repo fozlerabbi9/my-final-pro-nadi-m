@@ -24,7 +24,8 @@ const AddProducts = () => {
                         price: price,
                         description: description,
                         img: image,
-                        available: available
+                        available: available,
+                        Minimumorder: 20
                     }
                     axios.post("http://localhost:4000/addproducts",productsDetails)
                     .then(res=>{

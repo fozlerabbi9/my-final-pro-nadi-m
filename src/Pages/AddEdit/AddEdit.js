@@ -13,6 +13,7 @@ const axios = require('axios').default;
 const AddEdit = () => {
     const [user, loading] = useAuthState(auth)
     const [edit, setEdit] = useState("")
+    const [error,setError] = useState("")
     const [updateDone, setUpdateDone] = useState("")
     const [currentUser, setCurrentUser] = useState({})
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
@@ -83,7 +84,12 @@ const AddEdit = () => {
 
         }
         else {
-            formData.append("image", image)
+            if(!data?.image){
+                setError("Please Add Your Profile Image !!")
+            }
+            else{
+                setError("")
+                formData.append("image", image)
             axios.post("https://api.imgbb.com/1/upload?key=d7cb843332a0859336d56fe2ea07decf", formData)
                 .then(res => {
                     if (res.data.success) {
@@ -108,6 +114,8 @@ const AddEdit = () => {
                     }
 
                 })
+            }
+            
         }
 
 
@@ -304,6 +312,7 @@ const AddEdit = () => {
                                                     readOnly {...register("image")} type="file" placeholder="Upload file" class="input input-bordered" /> : <input {...register("image")} type="file" placeholder="Upload file" class="input input-bordered" />}
 
                                         </div>
+                                        <h1 className='text-red-600 font-bold my-5'>{error}</h1>
                                         {!edit ? <input disabled readOnly className='btn w-full max-w-xs text-primary' type="submit" value="Update Profile" /> : updateDone ? <input disabled readOnly className='btn w-full max-w-xs text-primary' type="submit" value="Update Profile" /> : <input className='btn w-full max-w-xs text-primary' type="submit" value="Update Profile" />}
                                     </form>
                                     <button onClick={handleProfileEdit} className='btn btn-primary'> edit</button>

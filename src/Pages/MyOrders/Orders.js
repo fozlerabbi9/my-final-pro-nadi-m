@@ -11,12 +11,13 @@ const Orders = ({product,index,refetch,isLoading}) => {
         return <Loading></Loading>
     }
    
-    
+    console.log(product);
     return (
         <tr>
         <th>{index + 1}</th>
         <td>{product.productname}</td>
-        <td>{product.totalprice}</td>
+        <td>{product.totalquentity}</td>
+        <td>${product.totalprice}</td>
     {product.payment === "paid" ? <Link to={''}><td><button  class="btn btn-sm btn-success">Paid</button></td></Link> :<Link to={`/dashboard/payment/${_id}`}><td><button class="btn btn-sm btn-warning">Pay</button></td></Link>}
         
     </tr>

@@ -3,14 +3,16 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import auth from '../../firebase.init';
 import Loading from '../../Shared/Loading';
+import AddProducts from '../AddProducts/AddProducts';
 import Orders from './Orders';
 
 
 const Myorders = () => {
     const [user, loading] = useAuthState(auth);
-
+    const email = user?.email
+console.log(user);
     const { isLoading, error, data: products,refetch } = useQuery('service', () =>
-        fetch(`http://localhost:4000/myorders/?email=${user?.email}`,
+        fetch(`http://localhost:4000/myorders/?email=${email}`,
         {
             method: "GET",
             headers: {
@@ -21,6 +23,7 @@ const Myorders = () => {
             res.json()
         )
         )
+        refetch()
         
     if (isLoading && loading) {
 
@@ -36,9 +39,10 @@ const Myorders = () => {
                     {products?.result?.length === 0 ? <h1 className='text-4xl text-center font-bold mb-32 mt-20'>Your Haven't Order Any Product</h1> : <thead>
                         <tr>
                             <th></th>
-                            <th>Name</th>
-                            <th>Job</th>
-                            <th>Favorite Color</th>
+                            <th>Product Name</th>
+                            <th>Total Qty</th>
+                            <th>Total Price</th>
+                            <th>Payment</th>
                         </tr>
                     </thead>}
                     <tbody>
