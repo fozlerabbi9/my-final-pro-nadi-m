@@ -16,6 +16,7 @@ import Myorders from './Pages/MyOrders/Myorders';
 import Payment from './Pages/Payment/Payment';
 import Requireauth from './Shared/RequirAuth/Requireauth'
 import AddEdit from './Pages/AddEdit/AddEdit';
+import TotalOrders from './Pages/Dashboard/TotalOrders';
 
 
 
@@ -36,6 +37,7 @@ function App() {
         <Route path='/dashboard' element={<Dashboard></Dashboard>}>
           <Route path='/dashboard/users' element={<Users></Users>}></Route>
           <Route path='/dashboard/myorders' element={<Myorders></Myorders>}></Route>
+          <Route path='/dashboard/totalorder' element={<TotalOrders></TotalOrders>}></Route>
         </Route>
         <Route path='/dashboard/payment/:id' element={<Payment></Payment>}></Route>
         <Route path='myorders' element={<Myorders></Myorders>}></Route>

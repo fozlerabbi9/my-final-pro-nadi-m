@@ -19,7 +19,7 @@ const Dashboard = () => {
         <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
           <li><Link to={"/dashboard"}>Appointment info</Link></li>
           <li><Link to={"/dashboard/myorders"}>My Orders</Link></li>
-          <li><Link to={"/dashboard/reviews"}>Reviews</Link></li>
+          {users.Role === "admin" && <li><Link to={"/dashboard/totalorder"}>Total Orders</Link></li>}
           
           {users.Role === "admin" && <li><Link to={"/dashboard/users"}>Users</Link></li>}
         </ul>

@@ -1,18 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
+import React from 'react';
 import { useQuery } from 'react-query';
-import auth from '../../firebase.init';
 import Loading from '../../Shared/Loading';
-import AddProducts from '../AddProducts/AddProducts';
-import Orders from './Orders';
+import Totalorder from './Totalorder';
 
+const TotalOrders = () => {
 
-const Myorders = () => {
-    const [user, loading] = useAuthState(auth);
-    const email = user?.email
-console.log(user);
     const { isLoading, error, data: products,refetch } = useQuery('service', () =>
-        fetch(`http://localhost:4000/myorders/?email=${email}`,
+        fetch(`http://localhost:4000/totalorder`,
         {
             method: "GET",
             headers: {
@@ -23,17 +17,16 @@ console.log(user);
             res.json()
         )
         )
-        // refetch()
+        refetch()
         
-    if (isLoading && loading) {
+    if (isLoading ) {
 
         return <Loading></Loading>
     }
-   
-    
+    console.log(products.orders);
     return (
         <div>
-            <h1>appointment infor:{products?.result?.length}</h1>
+            <h1>appointment infor:{products?.orders?.length}</h1>
             <div class="overflow-x-auto">
                 <table class="table w-full">
                     {products?.result?.length === 0 ? <h1 className='text-4xl text-center font-bold mb-32 mt-20'>Your Haven't Order Any Product</h1> : <thead>
@@ -48,7 +41,7 @@ console.log(user);
                     <tbody>
 
                         {
-                           !products?.result?.map ? <Loading></Loading> : products?.result?.map((product,index)=><Orders key={product._id} refetch={refetch} isLoading={isLoading} product={product} index={index} ></Orders>)
+                           !products?.orders?.map ? <Loading></Loading> : products?.orders?.map((product,index)=><Totalorder key={product._id} refetch={refetch} isLoading={isLoading} product={product} index={index} ></Totalorder>)
                         }
 
                     </tbody>
@@ -58,4 +51,4 @@ console.log(user);
     );
 };
 
-export default Myorders;
+export default TotalOrders;
