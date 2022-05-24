@@ -37,7 +37,7 @@ const Navbar = () => {
         <li><Link to="/myorders">My Orders</Link></li>
         <li><Link to="/addreview">Add A Review</Link></li>
         <li><Link to="/addproducts">Add Products</Link></li>
-        <li><Link to="/about">My Profile</Link></li>
+        <li><Link to="/addedit">My Profile</Link></li>
         <li className="nav-item">
             {user ? <Link  onClick={logout} to={"/login"}>Sign Out</Link> : <Link to={"/login"}>Login</Link>}
         </li>

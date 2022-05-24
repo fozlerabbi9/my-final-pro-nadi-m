@@ -14,6 +14,10 @@ import Dashboard from './Pages/Dashboard/Dashboard';
 import Users from './Pages/Dashboard/Users';
 import Myorders from './Pages/MyOrders/Myorders';
 import Payment from './Pages/Payment/Payment';
+import Requireauth from './Shared/RequirAuth/Requireauth'
+import AddEdit from './Pages/AddEdit/AddEdit';
+
+
 
 function App() {
   return (
@@ -25,7 +29,10 @@ function App() {
         <Route path='/signup' element={<Signup></Signup>}></Route>
         <Route path='/addproducts' element={<AddProducts></AddProducts>}></Route>
         <Route path='/addreview' element={<AddReview></AddReview>}></Route>
-        <Route path='/orderproducts/:id' element={<OrderProducts></OrderProducts>}></Route>
+        <Route path="/addedit" element={<AddEdit></AddEdit>}></Route>
+        <Route path='/orderproducts/:id' element={<Requireauth>
+          <OrderProducts></OrderProducts>
+        </Requireauth>}></Route>
         <Route path='/dashboard' element={<Dashboard></Dashboard>}>
           <Route path='/dashboard/users' element={<Users></Users>}></Route>
         </Route>
