@@ -16,7 +16,6 @@ const AddEdit = () => {
     const [updateDone, setUpdateDone] = useState("")
     const [currentUser, setCurrentUser] = useState({})
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
-    
     axios.get(`http://localhost:4000/user?email=${user?.email}`)
         .then(res => {
             setCurrentUser(res.data);
@@ -29,11 +28,10 @@ const AddEdit = () => {
 
 
     const onSubmit = data => {
-        console.log(data);
         const { name, email, address, phone } = data
         let image
-        if(data.image){
-            return image=data?.image[0]
+        if (data?.image) {
+             image = data?.image[0]
         }
         var formData = new FormData();
         formData.append("image", image)
@@ -85,10 +83,11 @@ const AddEdit = () => {
 
         }
         else {
+            formData.append("image", image)
             axios.post("https://api.imgbb.com/1/upload?key=d7cb843332a0859336d56fe2ea07decf", formData)
                 .then(res => {
                     if (res.data.success) {
-                        const image = res?.data?.data?.display_url
+                        const image = res.data.data.display_url
                         console.log(image)
                         const userDetails = {
                             name: name,
@@ -186,7 +185,7 @@ const AddEdit = () => {
                                             <input
                                                 type="email"
                                                 placeholder="Your Email"
-                                                
+
                                                 readOnly
                                                 value={user?.email}
                                                 className="input input-bordered w-full max-w-xs"
@@ -302,7 +301,7 @@ const AddEdit = () => {
                                             </label>
                                             {!edit ? <input disabled
                                                 readOnly {...register("image")} type="file" placeholder="Upload file" class="input input-bordered" /> : updateDone ? <input disabled
-                                                readOnly {...register("image")} type="file" placeholder="Upload file" class="input input-bordered" /> : <input {...register("image")} type="file" placeholder="Upload file" class="input input-bordered" />}
+                                                    readOnly {...register("image")} type="file" placeholder="Upload file" class="input input-bordered" /> : <input {...register("image")} type="file" placeholder="Upload file" class="input input-bordered" />}
 
                                         </div>
                                         {!edit ? <input disabled readOnly className='btn w-full max-w-xs text-primary' type="submit" value="Update Profile" /> : updateDone ? <input disabled readOnly className='btn w-full max-w-xs text-primary' type="submit" value="Update Profile" /> : <input className='btn w-full max-w-xs text-primary' type="submit" value="Update Profile" />}

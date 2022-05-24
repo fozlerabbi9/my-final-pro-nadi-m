@@ -21,11 +21,11 @@ const Navbar = () => {
             </div>
         }
         if (user?.photoURL) {
-            return <div style={{display:"flex", justifyContent:"center",alignItems:"center",width:"38px",cursor:"pointer"}} title={user?.displayName}>
-                <img style={{borderRadius:"50%"}} src={user?.photoURL} alt="" />
+            return <div style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "38px", cursor: "pointer" }} title={user?.displayName}>
+                <img style={{ borderRadius: "50%" }} src={user?.photoURL} alt="" />
             </div>
         }
-        
+
     }
     const logout = () => {
         signOut(auth);
@@ -39,23 +39,12 @@ const Navbar = () => {
         <li><Link to="/addproducts">Add Products</Link></li>
         <li><Link to="/addedit">My Profile</Link></li>
         <li className="nav-item">
-            {user ? <Link  onClick={logout} to={"/login"}>Sign Out</Link> : <Link to={"/login"}>Login</Link>}
+            {user ? <Link onClick={logout} to={"/login"}>Sign Out</Link> : <Link to={"/login"}>Login</Link>}
         </li>
         <li className="nav-item">
-            {user ? <Link style={{display:"none"}} to={"/signup"}>Sign Up</Link> : <Link style={{display:"block"}} to={"/signup"}>Sign Up</Link>}
+            {user ? <Link style={{ display: "none" }} to={"/signup"}>Sign Up</Link> : <Link style={{ display: "block" }} to={"/signup"}>Sign Up</Link>}
         </li>
         {userProfile()}
-
-
-        {/* {
-            user && <li><Link to="/dashboard">Dashboard</Link></li>
-        }
-        <li>
-            {user ? <Link  onClick={logout} to={"/login"}>Sign Out</Link> : <Link  to={"/login"}>Login</Link>}
-        </li>
-        <li className="nav-item">
-            {user ? <Link  to={"/signup"}>Sign Up</Link> : <Link to={"/signup"}>Sign Up</Link>}
-        </li> */}
 
     </>
     return (

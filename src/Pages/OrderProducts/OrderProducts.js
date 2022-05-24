@@ -8,12 +8,19 @@ import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Loading from '../../Shared/Loading';
 
+
 const OrderProducts = () => {
     const [price, setPrice] = useState(0)
+    const [validateError,setValidateError] = useState()
     const [user] = useAuthState(auth)
     const [inputQuentity, setInputQuentity] = useState(0)
     const { register, handleSubmit, reset } = useForm();
     const { id } = useParams()
+    const [currentUser, setCurrentUser] = useState({})
+    axios.get(`http://localhost:4000/user?email=${user?.email}`)
+        .then(res => {
+            setCurrentUser(res.data);
+        })
     const { isLoading, error, data: product, refetch } = useQuery('service', () =>
         fetch(`http://localhost:4000/payment/${id}`).then(res =>
             res.json()
@@ -25,7 +32,15 @@ const OrderProducts = () => {
     }
 
     const onSubmit = data => {
-        const {name,address,phone} = data
+        if( !currentUser.name || !currentUser.address || !currentUser.phone){
+            return setValidateError("At First Please Update Your Profile Using My Profile Option")
+        }
+        if(inputQuentity<20){
+            console.log(inputQuentity);
+            return toast.error("Minimum Order 20 pcs !!")
+        }
+        else{
+            const {name,address,phone} = data
         
         const quentity = {
             qty: product?.result?.available,
@@ -66,20 +81,20 @@ const OrderProducts = () => {
                     }
                 refetch()
             })
+        }
             
-
-           
-
-
+        
     }
+    
 
     const priceUpdate = (event) => {
+        console.log( + event.target.value)
         const price = + product.result.price;
         const inputQuentity = + event.target.value;
         setPrice(price * inputQuentity)
         setInputQuentity(inputQuentity)
     }
-    console.log(product);
+ 
 
     return (
         <div class="hero min-h-screen bg-base-200">
@@ -98,16 +113,19 @@ const OrderProducts = () => {
                 </div>
                 <div class="hero bg-base-200">
                     <div class="hero-content" style={{width:"570px"}}>
-
+                   
                         <div class="card shadow-2xl bg-base-100" style={{ width: "100%" }}>
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <div class="card-body">
+                             <h1 className='text-red-600 font-bold '>{validateError}</h1>
+                                
                                     <div class="form-control">
                                         <label class="label">
-                                            <span class="label-text">Your Name</span>
+                                            <span  class="label-text">Your Name</span>
 
                                         </label>
-                                        <input {...register("name")} type="text" placeholder="Your Name" class="input input-bordered" />
+                                        <input {...register("name")} type="text" value={currentUser?.name} disabled readOnly placeholder="Your Name" class="input input-bordered" />
+                                        
                                     </div>
                                     <div class="form-control">
                                         <label class="label">
@@ -121,7 +139,8 @@ const OrderProducts = () => {
                                             <span class="label-text">Address</span>
 
                                         </label>
-                                        <input {...register("address")} type="text" placeholder="Address" class="input input-bordered" />
+                                        <input {...register("address")} type="text" value={currentUser?.address} disabled readOnly placeholder="Address" class="input input-bordered" />
+                                        
 
                                     </div>
                                     <div class="form-control">
@@ -129,7 +148,8 @@ const OrderProducts = () => {
                                             <span class="label-text">Phone Number</span>
 
                                         </label>
-                                        <input {...register("phone")} type="number" placeholder="description" class="input input-bordered" />
+                                        <input {...register("phone")} type="number" value={currentUser?.phone} disabled readOnly placeholder="description" class="input input-bordered" />
+                                        
 
                                     </div>
                                     <div class="form-control">
@@ -137,7 +157,7 @@ const OrderProducts = () => {
                                             <span class="label-text">Order Quentity</span>
 
                                         </label>
-                                        <input onChange={(event) => priceUpdate(event)} type="number" placeholder="Minimum Order 50 pcs" class="input input-bordered"/>
+                                        <input onChange={(event) => priceUpdate(event)} type="number" placeholder="Minimum Order 20 pcs" class="input input-bordered"/>
 
                                     </div>
                                     <div class="form-control">
@@ -149,7 +169,7 @@ const OrderProducts = () => {
 
                                     </div>
                                     <div class="form-control mt-6">
-                                        <button type='submit' class="btn btn-primary">Place Order</button>
+                                        <button type='submit' class="btn btn-primary bg-blue-500" >Place Order</button>
                                     </div>
                                 </div>
                             </form>
