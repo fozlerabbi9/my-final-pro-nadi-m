@@ -29,7 +29,7 @@ const AddProducts = () => {
                     }
                     axios.post("http://localhost:4000/addproducts",productsDetails)
                     .then(res=>{
-                      toast.success("Added Successfull")
+                      toast.success("Product Added Successfull")
                       reset()
                     })
                 }
@@ -43,11 +43,11 @@ const AddProducts = () => {
     return (
         <>
             <div class="hero bg-base-200" style={{height:"100vh"}}>
-                <div class="hero-content" style={{ width: "40%" }}>
+                <div class="hero-content cardHead" style={{ width: "60%" }}>
 
                     <div class="card shadow-2xl bg-base-100" style={{ width: "100%" }}>
                         <form onSubmit={handleSubmit(onSubmit)}>
-                            <div class="card-body">
+                            <div class="card-body cardBody" style={{width:"500px"}}>
                                 <div class="form-control">
                                     <label class="label">
                                         <span class="label-text">Products Name</span>
@@ -65,15 +65,15 @@ const AddProducts = () => {
                                 </div>
                                 <div class="form-control">
                                     <label class="label">
-                                        <span class="label-text">description</span>
+                                        <span class="label-text">Product Details</span>
 
                                     </label>
-                                    <input {...register("description")} type="text" placeholder="description" class="input input-bordered" />
+                                    <input {...register("description")} type="text" placeholder="Details" class="input input-bordered" />
 
                                 </div>
                                 <div class="form-control">
                                     <label class="label">
-                                        <span class="label-text">available</span>
+                                        <span class="label-text">Available Qty</span>
 
                                     </label>
                                     <input {...register("available")} type="number" placeholder="available" class="input input-bordered" />
@@ -87,7 +87,7 @@ const AddProducts = () => {
 
                                 </div>
                                 <div class="form-control mt-6">
-                                    <button type='submit' class="btn btn-primary">Add Products</button>
+                                    <button type='submit' class="btn btn-primary text-white bg-blue-500">Add Product</button>
                                 </div>
                             </div>
                         </form>

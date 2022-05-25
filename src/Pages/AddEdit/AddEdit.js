@@ -125,7 +125,7 @@ const AddEdit = () => {
 
     }
 
-
+    
     return (
         <>
 
@@ -134,7 +134,7 @@ const AddEdit = () => {
                 <div class="hero-content flex-col lg:flex-row-reverse">
                     <div class="avatar online">
                         <div class=" rounded-full" style={{width:"300px"}}>
-                            <img src={currentUser?.img} />
+                            <img src={user.photoURL ? user.photoURL : currentUser?.img} />
                         </div>
                     </div>
 
@@ -152,7 +152,7 @@ const AddEdit = () => {
                                                 </label>
                                                 {!edit ? <input
                                                     type="text"
-                                                    value={currentUser?.name}
+                                                    value={user.displayName ? user.displayName :currentUser?.name}
                                                     placeholder="Your Name"
                                                     disabled
                                                     readOnly
@@ -321,7 +321,7 @@ const AddEdit = () => {
                                             <h1 className='text-red-600 font-bold my-5'>{error}</h1>
                                         </div>
                                         <div className='my-10 flex' style={{ justifyContent: "space-between" }}>
-                                            {!edit ? <input disabled readOnly className='btn w-full max-w-xs text-primary' type="submit" value="Update Profile" /> : updateDone ? <input disabled readOnly className='btn w-full max-w-xs text-primary' type="submit" value="Update Profile" /> : <input className='btn w-full max-w-xs text-primary' type="submit" value="Update Profile" />}
+                                            {!edit ? <input disabled readOnly className='btn w-full max-w-xs text-primary' type="submit" value="Update Profile" /> : updateDone ? <input disabled readOnly className='btn w-full max-w-xs text-primary' type="submit" value="Update Profile" /> : <input className='btn w-full max-w-xs text-primary btn-primary text-white bg-blue-500' type="submit" value="Update Profile" />}
                                             <button onClick={handleProfileEdit} className='btn btn-primary'> edit</button>
                                         </div>
                                     </form>

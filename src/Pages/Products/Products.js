@@ -27,13 +27,13 @@ const Products = () => {
     
     return (
         <>
-            <h1 className='text-center text-2xl font-bold my-10'>Products</h1>
+            <h1 className='text-center text-4xl text-primary font-bold my-10'> / Products \</h1>
             <div class="grid lg:grid-cols-3 gap-4">
                 {
                   allProducts ? products.products.map(product => <Product key={product.id} refetch={refetch} product={product}></Product>) : products.products.slice(-6).map(product => <Product key={product.id} refetch={refetch} product={product}></Product>)
                 }
             </div>
-            {allProducts ? <button style={{display:"none"}} onClick={handleAllProducts} class="btn btn-wide">See All Products</button> : <button onClick={handleAllProducts} class="btn btn-wide mt-14">See All Products</button>}
+            {allProducts ? <button style={{display:"none"}} onClick={handleAllProducts} class="btn btn-wide">See All Products</button> : <button onClick={handleAllProducts} class="btn btn-primary mt-14">See All Products</button>}
         </>
     );
 };

@@ -78,6 +78,7 @@ const OrderProducts = () => {
                     axios.post("http://localhost:4000/orders", fulldetails)
                         .then(res => {
                             console.log(res);
+                            toast.success("Product Booking Confirm")
                             reset()
                             setPrice((+ product.result.minimum) * (+ product.result.price))
                         })

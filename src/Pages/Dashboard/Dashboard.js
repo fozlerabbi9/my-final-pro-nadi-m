@@ -13,17 +13,17 @@ const Dashboard = () => {
       <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
       <div class="drawer-content flex flex-col ">
 
-        <h1 className='text-2xl text-primary font-bold'>Welcome To Dashboard</h1>
+        <h1 className='text-4xl text-primary font-bold'>Welcome To Dashboard</h1>
         <Outlet className="w-full"></Outlet>
         
 
       </div>
       <div class="drawer-side">
         <label for="my-drawer-2" class="drawer-overlay"></label>
-        <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
+        <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content" style={{width:"220px" ,borderRight:"1px solid #80808045"}}>
           {users?.Role === "admin" && <li><Link to={"/dashboard/addproduct"}>Add Product</Link></li>}
           {users?.Role === "admin" ? <li style={{display:"none"}}><Link to={"/dashboard/myorders"}>My Orders</Link></li> : <li><Link to={"/dashboard/myorders"}>My Orders</Link></li>}
-          {users?.Role === "admin" ? <li style={{display:"none"}}><Link to={"/dashboard/deliverystatus"}>Product Delivery Status</Link></li> : <li><Link to={"/dashboard/deliverystatus"}>Product Delivery Status</Link></li>}
+          {users?.Role === "admin" ? <li style={{display:"none"}}><Link to={"/dashboard/deliverystatus"}>Delivery Status</Link></li> : <li><Link to={"/dashboard/deliverystatus"}>Delivery Status</Link></li>}
           {users?.Role === "admin" && <li><Link to={"/dashboard/totalorder"}>Manage All Orders</Link></li>}
           {users?.Role === "admin" && <li><Link to={"/dashboard/products"}>Manage Products</Link></li>}
           

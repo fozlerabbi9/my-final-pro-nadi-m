@@ -25,7 +25,7 @@ const AddProducts = () => {
                     }
                     axios.post("http://localhost:4000/reviews",reviewDetails)
                     .then(res=>{
-                      toast.success("Added Successfull")
+                      toast.success("Thanks For Your Positive Review")
                       reset()
                     })
                 }

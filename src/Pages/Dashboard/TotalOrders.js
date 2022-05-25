@@ -29,13 +29,13 @@ const TotalOrders = () => {
     console.log(products.orders);
     return (
         <div>
-            <h1>appointment infor:{products?.orders?.length}</h1>
+            <h1 className='text-3xl text-secondary my-7 font-bold'>Total Orders:{products?.orders?.length}</h1>
             <div class="overflow-x-auto">
                 <table class="table w-full">
                     {products?.result?.length === 0 ? <h1 className='text-4xl text-center font-bold mb-32 mt-20'>Your Haven't Order Any Product</h1> : <thead>
-                        <tr>
+                        <tr style={{position:"sticky", top:"0", zIndex:"54"}}>
                             <th></th>
-                            <th>Product Name</th>
+                            <th className='pName'>Product Name</th>
                             <th>Total Qty</th>
                             <th>Total Price</th>
                             <th style={{width:"230px"}}>Payment</th>

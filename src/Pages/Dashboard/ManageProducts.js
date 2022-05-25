@@ -28,7 +28,7 @@ const ManageProducts = () => {
                             </label>
                         </th>
                         <th>Name</th>
-                        <th>Description</th>
+                        <th className='talbeName'>Description</th>
                         <th>Price</th>
                         <th></th>
                     </tr>

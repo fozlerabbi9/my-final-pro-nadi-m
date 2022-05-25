@@ -6,7 +6,7 @@ import offer from "../Images/offer.jpg";
 
 const FreeShipping = () => {
     return (
-        <div className='shipping justify-center gap-y-12 grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1' data-aos="fade-up">
+        <div className='mt-10 shipping justify-center gap-y-12 grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1' data-aos="fade-up">
                 <div className="image flex lg:justify-center gap-5">
                     <img className='shippingimg' src={freeshipping} alt="" />
                     <div style={{textAlign:"start"}}>

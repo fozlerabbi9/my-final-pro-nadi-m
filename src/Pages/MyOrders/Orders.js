@@ -52,18 +52,20 @@ const Orders = ({ product, index, refetch, isLoading }) => {
             </div>
             <div>
               <div class="font-bold">{product.productname}</div>
-              <div class="text-sm opacity-50">Bangladesh</div>
+              <div class="text-sm opacity-50 talbeName">Bangladesh</div>
             </div>
           </div>
         </td>
-        <td>
+        <td className='talbeName'>
         {product.totalquentity}
           <br/>
         </td>
         <td>Price: ${product.totalprice}</td>
-        <th>
+        <th className='uBtn'>
         {product.payment === "paid" ? <Link to={''}><td><button disabled readOnly class="btn btn-sm btn-success">Paid</button></td></Link> : <Link to={`/dashboard/payment/${_id}`}><td><button class="btn btn-sm btn-warning">Pay</button></td></Link>}
+            <span className='talbeName'>
             {product.payment === "paid"?<Link to={''}><td><button disabled readOnly onClick={() => deleteButton(_id)} class="btn btn-sm btn-warning" >Cancel</button></td></Link>:<Link to={''}><td><button onClick={() => deleteButton(_id)} class="btn btn-sm bg-red-600" >Cancel</button></td></Link>}
+            </span>
         </th>
       </tr>
         </>

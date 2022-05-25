@@ -20,12 +20,15 @@ import TotalOrders from './Pages/Dashboard/TotalOrders';
 import ManageProducts from './Pages/Dashboard/ManageProducts';
 import ProtectedPage from './Shared/ProtectedPage';
 import DeliveryProductStatus from './Pages/Dashboard/DeliveryProductStatus';
+import ScrollToTop from './Pages/ScrollToTop/ScrollToTop';
+import NotFound from './Pages/NotFound/NotFound';
 
 
 
 function App() {
   return (
     <div className="App">
+      <ScrollToTop></ScrollToTop>
       <Header></Header>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
@@ -54,6 +57,7 @@ function App() {
         </Route>
         <Route path='/dashboard/payment/:id' element={<Payment></Payment>}></Route>
         <Route path='myorders' element={<Myorders></Myorders>}></Route>
+        <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
       <ToastContainer></ToastContainer>

@@ -44,10 +44,10 @@ const Myorders = () => {
                                     </label>
                                 </th>
                                 <th>Products Name</th>
-                                <th>Total Qty</th>
+                                <th className='talbeName'>Total Qty</th>
                                 <th>Total Price</th>
                                 <th style={{ width: "230px" }}>Payment</th>
-                                <th></th>
+                                <th className='talbeName'></th>
                             </tr>
                         </thead>}
                     <tbody>

@@ -7,7 +7,7 @@ import logo5 from "../Images/logo-5.png";
 
 const BrandName = () => {
     return (
-        <div className='brand' data-aos="fade-up">
+        <div className='brand my-20' data-aos="fade-up">
                 <div className="image1">
                     <img className='brandimg' src={logo1} alt="" />
                 </div>

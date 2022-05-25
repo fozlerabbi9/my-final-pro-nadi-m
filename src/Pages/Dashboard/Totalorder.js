@@ -22,7 +22,7 @@ const Totalorder = ({ product, index }) => {
         }
     }
     const shippingBtn = (id) => {
-        const proced = window.confirm("Are You Agree For Delete ?")
+        const proced = window.confirm("Are You Agree For Shipping Order ?")
         if (proced){
             axios.put(`http://localhost:4000/order?id=${id}`)
             .then(res => {
@@ -36,10 +36,10 @@ const Totalorder = ({ product, index }) => {
     console.log(product.shipping);
     return (
         <tr>
-            <th>{index + 1}</th>
-            <td>{product.productname}</td>
-            <td>{product.totalquentity}</td>
-            <td>${product.totalprice}</td>
+            <th className='tableNumberr'>{index + 1}</th>
+            <td className='talbeName'>{product.productname}</td>
+            <td className='tableQty'>{product.totalquentity}</td>
+            <td className='talbePrice'>${product.totalprice}</td>
             {product.payment === "paid" ? <Link to={''}><td><button onClick={() => shippingBtn(_id)} disabled={product?.shipping==="confirm"} class="btn btn-sm btn-success text-white">{product?.shipping==="confirm" ? "Shipped":"Pending"}</button></td></Link> : <Link to={''}><td><button class="btn btn-sm btn-info text-white">UnPaid</button></td></Link>}
             <Link to={''}><td><button disabled={product?.shipping==="confirm"} onClick={() => deleteButton(_id)} class="btn btn-sm btn-danger" >Delete</button></td></Link>
 

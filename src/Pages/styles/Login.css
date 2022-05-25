@@ -91,7 +91,7 @@
 .error-message::before{
     content: "❌ ";
 }
-/* .card{
+/* .perItem{
     background-color: #80808014;
     backdrop-filter: blur(20px);
 
@@ -366,7 +366,7 @@ ion-icon.md.hydrated:hover{
     color: white !important;
 }
 .profile{
-    background: #808080b3;
+    background: #00ad74;
     width: 35px;
     height: 35px;
     display: flex;
@@ -378,8 +378,8 @@ ion-icon.md.hydrated:hover{
     padding: 20px;
 }
 .profileName{
-    margin-top: 7px;
-    color: initial;
+    margin-top: 0px;
+    color: white;
 }
 .updateIcon{
     margin: 0px !important;
@@ -561,5 +561,22 @@ ion-icon.md.hydrated:hover{
     .blogCard{
         height: 700px;
     }
+    .tableNumberr{
 
+    }
+    .talbeName{
+        display: none;
+    }
+    .tableQty{
+        
+    }
+    .talbePrice{
+        
+    }
+    .pName{
+        display: none;
+    }
+    .cardHead, .cardBody{
+        width: 90% !important;
+    }
 }

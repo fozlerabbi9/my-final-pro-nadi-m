@@ -36,12 +36,12 @@ const ManageAllProduct = ({products,isLoading,refetch}) => {
               </div>
             </div>
             <div>
-              <div class="font-bold">{products.name}</div>
-              <div class="text-sm opacity-50">Bangladesh</div>
+              <div class="font-bold talbeName">{products.name}</div>
+              <div class="text-sm opacity-50 talbeName">Bangladesh</div>
             </div>
           </div>
         </td>
-        <td>
+        <td className='talbeName'>
           {products.description}
           <br/>
         </td>

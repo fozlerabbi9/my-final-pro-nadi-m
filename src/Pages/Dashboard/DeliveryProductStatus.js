@@ -37,7 +37,7 @@ const DeliveryProductStatus = () => {
                             <th></th>
                             <th>Product Name</th>
                             <th>Status</th>
-                            <th>Transaction ID</th>
+                            <th className='talbeName'>Transaction ID</th>
                         </tr>
                     </thead>
                     <tbody>

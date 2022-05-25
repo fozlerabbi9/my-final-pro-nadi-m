@@ -11,7 +11,7 @@ const DeliveryStatus = ({ product }) => {
                 <li class="step step-primary">Shipping Confirmed</li>
                 <li class="step">Receive Product</li>
             </ul></td>
-            <td>{product._id}</td>
+            <td className='talbeName'>{product._id}</td>
         </tr>
     );
 };

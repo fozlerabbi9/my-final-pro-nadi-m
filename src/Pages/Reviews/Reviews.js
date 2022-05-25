@@ -4,6 +4,7 @@ import Loading from '../../Shared/Loading';
 import Review from './Review';
 
 const Reviews = () => {
+    const [allReviews,setAllRevires] = useState('')
     const { isLoading, error, data: reviews } = useQuery('reviews', () =>
         fetch('http://localhost:4000/reviews').then(res =>
             res.json()
@@ -13,15 +14,19 @@ const Reviews = () => {
     if (isLoading) {
         return <Loading></Loading>
     }
+    const HandleReviews=()=>{
+        setAllRevires("all Revires")
+    }
     return (
-        <>
-        <h1 className='text-5xl my-10 text-center animate__animated wow animate__fadeInDown reviewsText'>Check What Customers Are Saying About Us</h1>
-        <div className=" grid lg:grid-cols-3 gap-y-8 gap-x-1 my-20 reviews" >
+      <div className='mt-20'>
+           <h1 className='text-5xl my-10 text-center animate__animated wow animate__fadeInDown reviewsText'>Check What Customers Are Saying About Us</h1>
+        <div className=" grid lg:grid-cols-3 gap-y-8 gap-x-1 reviews" >
            {
-              (reviews.reviews && reviews.reviews.map(review => <Review review={review} key={review.id}></Review>))
+              allReviews ?  reviews.reviews.map(review => <Review review={review} key={review.id}></Review>): reviews.reviews.slice(-6).map(review => <Review review={review} key={review.id}></Review>)
            }
         </div>
-        </>
+        {allReviews ? <button style={{display:"none"}} onClick={HandleReviews} class="btn btn-wide">See All Products</button> : <button onClick={HandleReviews} class="btn btn-primary">See All Reviews</button>}
+      </div>
     );
 };
 

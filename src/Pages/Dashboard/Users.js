@@ -34,9 +34,9 @@ const Users = () => {
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Name</th>
-                        <th>Job</th>
-                        <th>Favorite Color</th>
+                        <th>User Email</th>
+                        <th>Admin</th>
+                        <th>Remove</th>
                     </tr>
                 </thead>
                 <tbody>

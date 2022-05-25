@@ -1,5 +1,6 @@
+import axios from 'axios';
 import { signOut } from 'firebase/auth';
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from "../firebase.init";
@@ -9,17 +10,27 @@ const Navbar = () => {
 
     const [user] = useAuthState(auth);
     const [users] = MakeAdmin(user)
+    const [currentUser, setCurrentUser] = useState({})
     const profile = (user?.email)?.slice(0, 1).toUpperCase()
+    axios.get(`http://localhost:4000/user?email=${user?.email}`)
+        .then(res => {
+            setCurrentUser(res.data);
+        })
 
     function userProfile() {
         if (!user) {
             return <div className='profile' style={{ display: "none" }}>
-                <h3 className='profileName'>{profile}</h3>
+                <h3 className='profileNam '>{profile}</h3>
             </div>
         }
         if (!user?.displayName) {
             return <div className='profile' title={user?.email}>
-                <h3 className='profileName'>{profile}</h3>
+                <h3 className='profileName text-white font-bold'>{profile}</h3>
+            </div>
+        }
+        if(currentUser?.img){
+            return <div style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "38px", cursor: "pointer" }} title={user?.displayName}>
+                <img style={{ borderRadius: "50%" }} src={currentUser?.img} alt="" />
             </div>
         }
         if (user?.photoURL) {
@@ -35,6 +46,8 @@ const Navbar = () => {
     };
     const menuItems = <>
         <li><Link to="/">Home</Link></li>
+        <li><Link to="/blog">Blog</Link></li>
+        <li><Link to="/porfolio">Portfolio</Link></li>
         {user && <li><Link to="/dashboard">Dashboard</Link></li>}
         {!users.Role==="admin" && <li><Link to="/myorders">My Orders</Link></li>}
         {!users.Role==="admin"&&<li><Link to="/addreview">Add A Review</Link></li>}
@@ -68,7 +81,6 @@ const Navbar = () => {
             </div>
             <div className="navbar-end">
                 <label  tabIndex="1" for="my-drawer-2" className=" drawer-button lg:hidden">
-                {/* <label for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden">Open drawer</label> */}
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                 </label>
             </div>
