@@ -42,7 +42,7 @@ const AddProducts = () => {
     }
     return (
         <>
-            <div class="hero bg-base-200">
+            <div class="hero bg-base-200" style={{height:"100vh"}}>
                 <div class="hero-content" style={{ width: "40%" }}>
 
                     <div class="card shadow-2xl bg-base-100" style={{ width: "100%" }}>

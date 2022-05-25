@@ -3,15 +3,17 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Navigate, useLocation } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../../Shared/Loading';
+import MakeAdmin from '../MakeAdmin';
 
 const Requireauth = ({ children }) => {
   const [user, loading, error] = useAuthState(auth);
+  const [users,setUsers,userLoading] = MakeAdmin(user)
   let location = useLocation();
   console.log(user);
-  if (loading) {
+  if (loading || userLoading) {
     return <Loading></Loading>
   }
-  if (!user) {
+  if (!user || !users.Role==="admin" || !users.Role) {
 
     return <Navigate to="/login" state={{ from: location }} replace />;
   }

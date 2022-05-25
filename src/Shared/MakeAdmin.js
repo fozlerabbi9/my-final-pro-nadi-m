@@ -3,9 +3,9 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../src/firebase.init';
 import Loading from './Loading';
 
-const MakeAdmin = () => {
+const MakeAdmin = (user) => {
     const [users,setUsers] = useState([])
-    const [user] = useAuthState(auth)
+    // const [user] = useAuthState(auth)
     const [userLoading,setUserLoading] = useState(true)
     if(userLoading){
          <Loading></Loading>
@@ -23,7 +23,7 @@ const MakeAdmin = () => {
         })
     },[user])
     console.log(user?.email);
-    return [users,setUsers]
+    return [users,setUsers,userLoading]
 };
 
 export default MakeAdmin;

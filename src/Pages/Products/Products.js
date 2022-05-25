@@ -26,7 +26,7 @@ const Products = () => {
     return (
         <>
             <h1 className='text-center text-2xl font-bold my-10'>Products</h1>
-            <div class="grid grid-cols-3 gap-4">
+            <div class="grid lg:grid-cols-3 gap-4">
                 {
                   allProducts ? products.products.map(product => <Product key={product.id} refetch={refetch} product={product}></Product>) : products.products.slice(-6).map(product => <Product key={product.id} refetch={refetch} product={product}></Product>)
                 }

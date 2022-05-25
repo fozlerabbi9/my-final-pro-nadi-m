@@ -1,9 +1,13 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, Outlet } from 'react-router-dom';
+import auth from '../../firebase.init';
 import MakeAdmin from '../../Shared/MakeAdmin';
 
 const Dashboard = () => {
-    const [users,setUsers] = MakeAdmin()
+  const[user] = useAuthState(auth)
+    const [users,setUsers] = MakeAdmin(user)
+    console.log(users);
     return (
         <div class="drawer drawer-mobile">
       <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
@@ -11,15 +15,16 @@ const Dashboard = () => {
 
         <h1 className='text-2xl text-primary font-bold'>Welcome To Dashboard</h1>
         <Outlet className="w-full"></Outlet>
-        <label for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+        
 
       </div>
       <div class="drawer-side">
         <label for="my-drawer-2" class="drawer-overlay"></label>
         <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
-          <li><Link to={"/dashboard"}>Appointment info</Link></li>
-          <li><Link to={"/dashboard/myorders"}>My Orders</Link></li>
-          {users.Role === "admin" && <li><Link to={"/dashboard/totalorder"}>Total Orders</Link></li>}
+          <li><Link to={"/dashboard/addproduct"}>Add Product</Link></li>
+          {!users.Role === "admin" &&<li><Link to={"/dashboard/myorders"}>My Orders</Link></li>}
+          {users.Role === "admin" && <li><Link to={"/dashboard/totalorder"}>Manage All Orders</Link></li>}
+          {users.Role === "admin" && <li><Link to={"/dashboard/products"}>Manage Products</Link></li>}
           
           {users.Role === "admin" && <li><Link to={"/dashboard/users"}>Users</Link></li>}
         </ul>

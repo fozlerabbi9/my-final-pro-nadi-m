@@ -7,22 +7,33 @@ import Loading from '../../Shared/Loading';
 
 
 
-const User = ({ user, refetch, index,isLoading }) => {
+const User = ({ user, refetch, index, isLoading }) => {
     const { Role } = user
     const [firebaseUser] = useAuthState(auth)
 
-    if(isLoading){
+    if (isLoading) {
         return <Loading></Loading>
     }
 
     const Admin = () => {
         fetch(`http://localhost:4000/user/admin/${user?.email}`, {
             method: "PUT",
+            headers: {
+                "authorization": `bearer ${localStorage.getItem("AccessToken")}`
+            }
         })
-            .then(res => res.json())
+            .then(res => {
+                if(res.status === 403){
+                    toast.error("Failed To Make An Admin")
+                }
+                return res.json()
+            })
             .then(data => {
-                toast.success("Make Admin Done")
-                refetch()
+                if (data.modifiedCount > 0) {
+                    toast.success("Make Admin Done")
+                    refetch()
+                }
+
             })
     }
 
@@ -42,7 +53,7 @@ const User = ({ user, refetch, index,isLoading }) => {
             <th>{index + 1}</th>
             <td>{user.email}</td>
             {Role !== "admin" ? <td><button onClick={Admin} class="btn btn-xs btn-primary">Make Admin</button></td> : <td></td>}
-            { firebaseUser.email === user.email ? <td><button disabled onClick={RemoveAdmin} class="btn btn-xs btn-primary">Remove</button></td> : <td><button disabled={Role !== "admin"} onClick={RemoveAdmin} class="btn btn-xs btn-primary">Remove</button></td>}
+            {firebaseUser.email === user.email ? <td><button disabled onClick={RemoveAdmin} class="btn btn-xs btn-primary">Remove</button></td> : <td><button disabled={Role !== "admin"} onClick={RemoveAdmin} class="btn btn-xs btn-primary">Remove</button></td>}
 
         </tr>
 
