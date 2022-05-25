@@ -13,11 +13,14 @@ const TotalOrders = () => {
                 "authorization": `bearer ${localStorage.getItem("AccessToken")}`
             }
         }
-        ).then(res =>
-            res.json()
+        ).then(res =>{
+            refetch()
+           return res.json()
+        }
+            
         )
         )
-        refetch()
+        
         
     if (isLoading ) {
 

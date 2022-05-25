@@ -18,6 +18,8 @@ import Requireauth from './Shared/RequirAuth/Requireauth'
 import AddEdit from './Pages/AddEdit/AddEdit';
 import TotalOrders from './Pages/Dashboard/TotalOrders';
 import ManageProducts from './Pages/Dashboard/ManageProducts';
+import ProtectedPage from './Shared/ProtectedPage';
+import DeliveryProductStatus from './Pages/Dashboard/DeliveryProductStatus';
 
 
 
@@ -31,9 +33,9 @@ function App() {
         <Route path='/signup' element={<Signup></Signup>}></Route>
         <Route path='/addreview' element={<AddReview></AddReview>}></Route>
         <Route path="/addedit" element={<AddEdit></AddEdit>}></Route>
-        <Route path='/orderproducts/:id' element={<Requireauth>
+        <Route path='/orderproducts/:id' element={<ProtectedPage>
           <OrderProducts></OrderProducts>
-        </Requireauth>}></Route>
+        </ProtectedPage>}></Route>
         <Route path='/dashboard' element={<Dashboard></Dashboard>}>
           <Route path='/dashboard/addproduct' element={<Requireauth>
             <AddProducts></AddProducts>
@@ -42,8 +44,13 @@ function App() {
             <Users></Users>
           </Requireauth>}></Route>
           <Route path='/dashboard/myorders' element={<Myorders></Myorders>}></Route>
-          <Route path='/dashboard/totalorder' element={<TotalOrders></TotalOrders>}></Route>
-          <Route path='/dashboard/products' element={<ManageProducts></ManageProducts>}></Route>
+          <Route path='/dashboard/deliverystatus' element={<DeliveryProductStatus></DeliveryProductStatus>}></Route>
+          <Route path='/dashboard/totalorder' element={<Requireauth>
+            <TotalOrders></TotalOrders>
+          </Requireauth>}></Route>
+          <Route path='/dashboard/products' element={<Requireauth>
+            <ManageProducts></ManageProducts>
+          </Requireauth>}></Route>
         </Route>
         <Route path='/dashboard/payment/:id' element={<Payment></Payment>}></Route>
         <Route path='myorders' element={<Myorders></Myorders>}></Route>

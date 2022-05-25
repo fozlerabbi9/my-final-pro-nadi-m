@@ -16,7 +16,10 @@ const Orders = ({ product, index, refetch, isLoading }) => {
         if (proced) {
             const url = `http://localhost:4000/products/${id}`
             fetch(url, {
-                method: "DELETE"
+                method: "DELETE",
+                headers: {
+                    "authorization": `bearer ${localStorage.getItem("AccessToken")}`
+                }
             })
                 .then(res => res.json())
                 .then(data => {
@@ -32,16 +35,38 @@ const Orders = ({ product, index, refetch, isLoading }) => {
                         })
         }
     }
-    console.log(product);
     return (
+        <>
         <tr>
-            <th>{index + 1}</th>
-            <td>{product.productname}</td>
-            <td>{product.totalquentity}</td>
-            <td>${product.totalprice}</td>
-            {product.payment === "paid" ? <Link to={''}><td><button disabled readOnly class="btn btn-sm btn-success">Paid</button></td></Link> : <Link to={`/dashboard/payment/${_id}`}><td><button class="btn btn-sm btn-warning">Pay</button></td></Link>}
+        <th>
+          <label>
+            <input type="checkbox" class="checkbox" />
+          </label>
+        </th>
+        <td>
+          <div class="flex items-center space-x-3">
+            <div class="avatar">
+              <div class="mask mask-squircle w-12 h-12">
+                <img src={product.img} alt="Avatar Tailwind CSS Component" />
+              </div>
+            </div>
+            <div>
+              <div class="font-bold">{product.productname}</div>
+              <div class="text-sm opacity-50">Bangladesh</div>
+            </div>
+          </div>
+        </td>
+        <td>
+        {product.totalquentity}
+          <br/>
+        </td>
+        <td>Price: ${product.totalprice}</td>
+        <th>
+        {product.payment === "paid" ? <Link to={''}><td><button disabled readOnly class="btn btn-sm btn-success">Paid</button></td></Link> : <Link to={`/dashboard/payment/${_id}`}><td><button class="btn btn-sm btn-warning">Pay</button></td></Link>}
             {product.payment === "paid"?<Link to={''}><td><button disabled readOnly onClick={() => deleteButton(_id)} class="btn btn-sm btn-warning" >Cancel</button></td></Link>:<Link to={''}><td><button onClick={() => deleteButton(_id)} class="btn btn-sm bg-red-600" >Cancel</button></td></Link>}
-        </tr>
+        </th>
+      </tr>
+        </>
 
     );
 };

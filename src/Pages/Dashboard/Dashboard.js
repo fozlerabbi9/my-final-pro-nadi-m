@@ -21,10 +21,11 @@ const Dashboard = () => {
       <div class="drawer-side">
         <label for="my-drawer-2" class="drawer-overlay"></label>
         <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
-          <li><Link to={"/dashboard/addproduct"}>Add Product</Link></li>
-          {!users.Role === "admin" &&<li><Link to={"/dashboard/myorders"}>My Orders</Link></li>}
-          {users.Role === "admin" && <li><Link to={"/dashboard/totalorder"}>Manage All Orders</Link></li>}
-          {users.Role === "admin" && <li><Link to={"/dashboard/products"}>Manage Products</Link></li>}
+          {users?.Role === "admin" && <li><Link to={"/dashboard/addproduct"}>Add Product</Link></li>}
+          {users?.Role === "admin" ? <li style={{display:"none"}}><Link to={"/dashboard/myorders"}>My Orders</Link></li> : <li><Link to={"/dashboard/myorders"}>My Orders</Link></li>}
+          {users?.Role === "admin" ? <li style={{display:"none"}}><Link to={"/dashboard/deliverystatus"}>Product Delivery Status</Link></li> : <li><Link to={"/dashboard/deliverystatus"}>Product Delivery Status</Link></li>}
+          {users?.Role === "admin" && <li><Link to={"/dashboard/totalorder"}>Manage All Orders</Link></li>}
+          {users?.Role === "admin" && <li><Link to={"/dashboard/products"}>Manage Products</Link></li>}
           
           {users.Role === "admin" && <li><Link to={"/dashboard/users"}>Users</Link></li>}
         </ul>

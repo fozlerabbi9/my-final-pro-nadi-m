@@ -1,35 +1,49 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import MakeAdmin from '../../Shared/MakeAdmin';
 
-const Totalorder = ({product,index}) => {
-    const [users,setUsers] = MakeAdmin()
+const Totalorder = ({ product, index }) => {
     const { _id } = product
-    console.log(product);
-   
+
     const deleteButton = (id) => {
         const proced = window.confirm("Are You Agree For Delete ?")
         if (proced) {
             const url = `http://localhost:4000/products/${id}`
             fetch(url, {
-                method: "DELETE"
+                method: "DELETE",
+                headers: {
+                    "authorization": `bearer ${localStorage.getItem("AccessToken")}`
+                }
             })
                 .then(res => res.json())
                 .then(data => {
                 })
         }
     }
-
+    const shippingBtn = (id) => {
+        const proced = window.confirm("Are You Agree For Delete ?")
+        if (proced){
+            axios.put(`http://localhost:4000/order?id=${id}`)
+            .then(res => {
+                
+                if(res.status===200){
+                }
+            })
+        }
+        
+    }
+    console.log(product.shipping);
     return (
         <tr>
-        <th>{index + 1}</th>
-        <td>{product.productname}</td>
-        <td>{product.totalquentity}</td>
-        <td>${product.totalprice}</td>
-        {product.payment === "paid" ? <Link to={''}><td><button  class="btn btn-sm btn-success text-white">Pending</button></td></Link>:<Link to={''}><td><button  class="btn btn-sm btn-info text-white">UnPaid</button></td></Link>}
-        {users.Role === "admin" && <Link to={''}><td><button onClick={() => deleteButton(_id)} class="btn btn-sm btn-danger" >Delete</button></td></Link>}
-    </tr>
+            <th>{index + 1}</th>
+            <td>{product.productname}</td>
+            <td>{product.totalquentity}</td>
+            <td>${product.totalprice}</td>
+            {product.payment === "paid" ? <Link to={''}><td><button onClick={() => shippingBtn(_id)} disabled={product?.shipping==="confirm"} class="btn btn-sm btn-success text-white">{product?.shipping==="confirm" ? "Shipped":"Pending"}</button></td></Link> : <Link to={''}><td><button class="btn btn-sm btn-info text-white">UnPaid</button></td></Link>}
+            <Link to={''}><td><button disabled={product?.shipping==="confirm"} onClick={() => deleteButton(_id)} class="btn btn-sm btn-danger" >Delete</button></td></Link>
+
+        </tr>
     );
 };
 

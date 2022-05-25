@@ -1,7 +1,26 @@
 import React from 'react';
 
 const ManageAllProduct = ({products,isLoading,refetch}) => {
-    console.log(products);
+  const {_id} = products
+
+  const deleteButton = (id) => {
+    console.log(id);
+    const proced = window.confirm("Are You Agree For Delete ?")
+    if (proced) {
+        const url = `http://localhost:4000/allproducts/${id}`
+        fetch(url, {
+            method: "DELETE",
+            headers: {
+              "authorization": `bearer ${localStorage.getItem("AccessToken")}`
+          }
+        })
+            .then(res => res.json())
+            .then(data => {
+              console.log(data);
+            })
+    }
+}
+
     return (
         <tr>
         <th>
@@ -28,7 +47,7 @@ const ManageAllProduct = ({products,isLoading,refetch}) => {
         </td>
         <td>Price: ${products.price}</td>
         <th>
-          <button class="btn btn-primary btn-xs">Delete</button>
+          <button onClick={()=>deleteButton(_id)} class="btn btn-primary btn-xs">Delete</button>
         </th>
       </tr>
     );

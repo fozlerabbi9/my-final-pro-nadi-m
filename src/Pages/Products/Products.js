@@ -8,7 +8,9 @@ const Products = () => {
     const [allProducts,setAllProducts] = useState('')
 
     const { isLoading, error, data: products,refetch } = useQuery('products', () =>
-        fetch('http://localhost:4000/products').then(res =>
+        fetch('http://localhost:4000/products',{
+            method:"GET",
+        }).then(res =>
             res.json()
         )
     )
