@@ -9,18 +9,18 @@ const Dashboard = () => {
     const [users,setUsers] = MakeAdmin(user)
     console.log(users);
     return (
-        <div class="drawer drawer-mobile">
-      <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
-      <div class="drawer-content flex flex-col ">
+        <div className="drawer drawer-mobile">
+      <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+      <div className="drawer-content flex flex-col ">
 
         {users?.Role === "admin" ? <h1 className='text-4xl text-primary font-bold' data-aos="fade-down">Welcome To Admin Pannel</h1> : <h1 className='text-4xl text-primary font-bold' data-aos="fade-down">Welcome To Dashboard</h1>}
         <Outlet className="w-full"></Outlet>
         
 
       </div>
-      <div class="drawer-side">
-        <label for="my-drawer-2" class="drawer-overlay"></label>
-        <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content" style={{width:"220px" ,borderRight:"1px solid #80808045"}} >
+      <div className="drawer-side">
+        <label for="my-drawer-2" className="drawer-overlay"></label>
+        <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content" style={{width:"220px" ,borderRight:"1px solid #80808045"}} >
           {users?.Role === "admin" && <li><Link to={"/dashboard/addproduct"}>Add Product</Link></li>}
           {users?.Role === "admin" ? <li style={{display:"none"}}><Link to={"/dashboard/myorders"}>My Orders</Link></li> : <li><Link to={"/dashboard/myorders"}>My Orders</Link></li>}
           {users?.Role === "admin" ? <li style={{display:"none"}}><Link to={"/dashboard/deliverystatus"}>Delivery Status</Link></li> : <li><Link to={"/dashboard/deliverystatus"}>Delivery Status</Link></li>}

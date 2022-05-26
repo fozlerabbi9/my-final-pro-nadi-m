@@ -24,6 +24,7 @@
     "react-toastify": "^9.0.1",
     "react-yup": "^1.23.0",
     "services": "^0.0.3",
+    "swiper": "^8.1.6",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
   },

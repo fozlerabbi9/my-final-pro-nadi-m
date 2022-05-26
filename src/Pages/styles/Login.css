@@ -38,6 +38,12 @@ hr{
     margin-left: 50px;
     margin-right: 50px;
 }
+.review{
+    box-shadow: 2px 3px 6px 0px;
+    border-radius: 10px;
+    margin-bottom: 29px;
+    padding-top: 13px;
+}
 .login-form {
     text-align: left;
     margin-top: 30px;

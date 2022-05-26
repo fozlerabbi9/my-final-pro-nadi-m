@@ -33,7 +33,7 @@ const CheckoutForm = ({product}) => {
             setSuccess('Payment SuccessFully')
             // setCardError('')
 
-            axios.put(`http://localhost:4000/orders?id=${id}`)
+            axios.put(`https://cryptic-waters-16109.herokuapp.com/orders?id=${id}`)
             .then(res => {
                 console.log(res);
             })

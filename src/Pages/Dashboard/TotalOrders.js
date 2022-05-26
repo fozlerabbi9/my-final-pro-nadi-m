@@ -6,7 +6,7 @@ import Totalorder from './Totalorder';
 const TotalOrders = () => {
 
     const { isLoading, error, data: products,refetch } = useQuery('service', () =>
-        fetch(`http://localhost:4000/totalorder`,
+        fetch(`https://cryptic-waters-16109.herokuapp.com/totalorder`,
         {
             method: "GET",
             headers: {
@@ -30,8 +30,8 @@ const TotalOrders = () => {
     return (
         <div>
             <h1 className='text-3xl text-secondary my-7 font-bold'>Total Orders:{products?.orders?.length}</h1>
-            <div class="overflow-x-auto">
-                <table class="table w-full">
+            <div className="overflow-x-auto">
+                <table className="table w-full">
                     {products?.result?.length === 0 ? <h1 className='text-4xl text-center font-bold mb-32 mt-20'>Your Haven't Order Any Product</h1> : <thead>
                         <tr style={{position:"sticky", top:"0", zIndex:"54"}}>
                             <th></th>

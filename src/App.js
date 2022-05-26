@@ -23,6 +23,7 @@ import DeliveryProductStatus from './Pages/Dashboard/DeliveryProductStatus';
 import ScrollToTop from './Pages/ScrollToTop/ScrollToTop';
 import NotFound from './Pages/NotFound/NotFound';
 import Blog from './Pages/Blog/Blog';
+import MyPortfolio from './Pages/MyPorfolio/MyPortfolio';
 
 
 
@@ -36,6 +37,7 @@ function App() {
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<Signup></Signup>}></Route>
         <Route path='/blog' element={<Blog></Blog>}></Route>
+        <Route path='/portfolio' element={<MyPortfolio></MyPortfolio>}></Route>
         <Route path='/addreview' element={<ProtectedPage>
           <AddReview></AddReview>
         </ProtectedPage>}></Route>

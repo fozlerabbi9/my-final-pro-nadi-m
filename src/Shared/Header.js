@@ -12,7 +12,7 @@ const Navbar = () => {
     const [users] = MakeAdmin(user)
     const [currentUser, setCurrentUser] = useState({})
     const profile = (user?.email)?.slice(0, 1).toUpperCase()
-    axios.get(`http://localhost:4000/user?email=${user?.email}`)
+    axios.get(`https://cryptic-waters-16109.herokuapp.com/user?email=${user?.email}`)
         .then(res => {
             setCurrentUser(res.data);
         })
@@ -47,7 +47,7 @@ const Navbar = () => {
     const menuItems = <>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/blog">Blog</Link></li>
-        <li><Link to="/porfolio">My Portfolio</Link></li>
+        <li><Link to="/portfolio">My Portfolio</Link></li>
         {user && <li><Link to="/dashboard">Dashboard</Link></li>}
         {users.Role==="admin" ? <li style={{display:"none"}}><Link to="/myorders">My Orders</Link></li> : !user ?  <li style={{display:"none"}}><Link to="/myorders">My Orders</Link></li> : <li><Link to="/myorders">My Orders</Link></li> }
         {users.Role==="admin" ? <li style={{display:"none"}}><Link to="/addreview">Add A Review</Link></li> : !user ? <li style={{display:"none"}}><Link to="/addreview">Add A Review</Link></li> : <li><Link to="/addreview">Add A Review</Link></li>}
@@ -62,7 +62,7 @@ const Navbar = () => {
 
     </>
     return (
-        <div className="navbar bg-base-100" style={{position:"sticky",top:'0', zIndex:"3"}}>
+        <div className="navbar bg-gray-200" style={{position:"sticky",top:'0', zIndex:"3"}}>
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex="0" className="btn btn-ghost lg:hidden">
@@ -72,7 +72,7 @@ const Navbar = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <Link to={'/'}><a className="btn btn-ghost normal-case text-xl">Mo Store</a></Link>
+                <Link to={'/'}><a className="btn btn-ghost normal-case text-xl"> <span className='font-bold text-3xl text-primary mr-2'>Mo</span>Store</a></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">

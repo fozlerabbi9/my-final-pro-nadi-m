@@ -11,7 +11,7 @@ const Myorders = () => {
     const [user, loading] = useAuthState(auth);
     const email = user?.email
     const { isLoading, error, data: products, refetch } = useQuery('service', () =>
-        fetch(`http://localhost:4000/myorders/?email=${email}`,
+        fetch(`https://cryptic-waters-16109.herokuapp.com/myorders/?email=${email}`,
             {
                 method: "GET",
                 headers: {
@@ -32,15 +32,15 @@ const Myorders = () => {
 
     return (
         <div>
-            <div class="overflow-x-auto w-full" data-aos="zoom-out">
+            <div className="overflow-x-auto w-full" data-aos="zoom-out">
                 <h1 className='text-3xl text-secondary mt-7 font-bold'>My Total Orders: {products?.result?.length} Pcs</h1>
-                <table class="table w-full">
+                <table className="table w-full">
                     {products?.result?.length === 0 ? <h1 className='text-4xl text-center font-bold mb-32 mt-20'>Your Haven't Order Any Product</h1> :
                         <thead>
                             <tr>
                                 <th>
                                     <label>
-                                        <input type="checkbox" class="checkbox" />
+                                        <input type="checkbox" className="checkbox" />
                                     </label>
                                 </th>
                                 <th>Products Name</th>

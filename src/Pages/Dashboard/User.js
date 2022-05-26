@@ -16,7 +16,7 @@ const User = ({ user, refetch, index, isLoading }) => {
     }
 
     const Admin = () => {
-        fetch(`http://localhost:4000/user/admin/${user?.email}`, {
+        fetch(`https://cryptic-waters-16109.herokuapp.com/user/admin/${user?.email}`, {
             method: "PUT",
             headers: {
                 "authorization": `bearer ${localStorage.getItem("AccessToken")}`
@@ -38,7 +38,7 @@ const User = ({ user, refetch, index, isLoading }) => {
     }
 
     const RemoveAdmin = () => {
-        fetch(`http://localhost:4000/user/admin/${user?.email}`, {
+        fetch(`https://cryptic-waters-16109.herokuapp.com/user/admin/${user?.email}`, {
             method: 'PATCH',
         })
             .then((res) => res.json())
@@ -52,8 +52,8 @@ const User = ({ user, refetch, index, isLoading }) => {
         <tr >
             <th>{index + 1}</th>
             <td>{user.email}</td>
-            {Role !== "admin" ? <td><button onClick={Admin} class="btn btn-xs btn-primary">Make Admin</button></td> : <td></td>}
-            {firebaseUser.email === user.email ? <td><button disabled onClick={RemoveAdmin} class="btn btn-xs btn-primary">Remove</button></td> : <td><button disabled={Role !== "admin"} onClick={RemoveAdmin} class="btn btn-xs btn-primary">Remove</button></td>}
+            {Role !== "admin" ? <td><button onClick={Admin} className="btn btn-xs btn-primary">Make Admin</button></td> : <td></td>}
+            {firebaseUser.email === user.email ? <td><button disabled onClick={RemoveAdmin} className="btn btn-xs btn-primary">Remove</button></td> : <td><button disabled={Role !== "admin"} onClick={RemoveAdmin} className="btn btn-xs btn-primary">Remove</button></td>}
 
         </tr>
 

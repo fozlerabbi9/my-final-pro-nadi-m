@@ -7,7 +7,7 @@ const ManageProducts = () => {
     const queryClient = new QueryClient()
 
     const { isLoading, error, data: products, refetch } = useQuery('products', () =>
-        fetch('http://localhost:4000/products').then(res =>
+        fetch('https://cryptic-waters-16109.herokuapp.com/products').then(res =>
             res.json()
         )
     )
@@ -17,14 +17,14 @@ const ManageProducts = () => {
     }
 
     return (
-        <div class="w-full" style={{overflowX:"hidden"}}>
+        <div className="w-full" style={{overflowX:"hidden"}}>
             <h1 className='text-3xl text-secondary mt-7 font-bold'>Total Stock Products: {products.products.length}</h1>
-            <table class="table w-full">
+            <table className="table w-full">
                 <thead>
                     <tr>
                         <th>
                             <label>
-                                <input type="checkbox" class="checkbox" />
+                                <input type="checkbox" className="checkbox" />
                             </label>
                         </th>
                         <th>Name</th>

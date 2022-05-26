@@ -23,7 +23,7 @@ const AddProducts = () => {
                         rating: data.rating,
                         img:image
                     }
-                    axios.post("http://localhost:4000/reviews",reviewDetails)
+                    axios.post("https://cryptic-waters-16109.herokuapp.com/reviews",reviewDetails)
                     .then(res=>{
                       toast.success("Thanks For Your Positive Review")
                       reset()
@@ -38,44 +38,44 @@ const AddProducts = () => {
     }
     return (
         <>
-            <div class="hero bg-base-200">
-                <div class="hero-content orderCard" style={{ width: "40%" }}>
+            <div className="hero bg-base-200">
+                <div className="hero-content orderCard" style={{ width: "40%" }}>
 
-                    <div class="card shadow-2xl bg-base-100" style={{ width: "100%" }} data-aos="zoom-out-up">
+                    <div className="card shadow-2xl bg-base-100" style={{ width: "100%" }} data-aos="zoom-out-up">
                         <form onSubmit={handleSubmit(onSubmit)}>
-                            <div class="card-body">
-                                <div class="form-control">
-                                    <label class="label">
-                                        <span class="label-text">Your Name</span>
+                            <div className="card-body">
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Your Name</span>
 
                                     </label>
-                                    <input {...register("name")} type="text" placeholder="Product Name" class="input input-bordered" />
+                                    <input {...register("name")} type="text" placeholder="Your Name" className="input input-bordered" />
                                 </div>
-                                <div class="form-control">
-                                    <label class="label">
-                                        <span class="label-text">Comment</span>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Comment</span>
 
                                     </label>
-                                    <input {...register("comment")} type="text" placeholder="Comment" class="input input-bordered" />
+                                    <input {...register("comment")} type="text" placeholder="Comment" className="input input-bordered" />
 
                                 </div>
-                                <div class="form-control">
-                                    <label class="label">
-                                        <span class="label-text">Rating</span>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Rating</span>
 
                                     </label>
-                                    <input {...register("rating")} type="number" placeholder="rating" class="input input-bordered" />
+                                    <input {...register("rating")} type="number" placeholder="rating" className="input input-bordered" />
 
                                 </div>
-                                <div class="form-control">
-                                    <label class="label">
-                                        <span class="label-text">Upload Your Image</span>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Upload Your Image</span>
                                     </label>
-                                    <input {...register("image")} type="file" placeholder="Upload file" class="input input-bordered" />
+                                    <input {...register("image")} type="file" placeholder="Upload file" className="input input-bordered" />
 
                                 </div>
-                                <div class="form-control mt-6">
-                                    <button type='submit' class="btn btn-primary bg-blue-600">Add Review</button>
+                                <div className="form-control mt-6">
+                                    <button type='submit' className="btn btn-primary bg-blue-600">Add Review</button>
                                 </div>
                             </div>
                         </form>

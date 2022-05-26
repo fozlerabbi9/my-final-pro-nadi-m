@@ -94,7 +94,7 @@ const Signup = () => {
             const password = event.target.password.value
             const confirmPass = event.target.confirmPassword.value
             const currentUser = {email:email}
-            fetch(`http://localhost:4000/user/${email}`,{
+            fetch(`https://cryptic-waters-16109.herokuapp.com/user/${email}`,{
                 method:"PUT",
                 headers:{
                     "content-type":"application/json"

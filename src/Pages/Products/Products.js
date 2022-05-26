@@ -8,7 +8,7 @@ const Products = () => {
     const [allProducts,setAllProducts] = useState('')
 
     const { isLoading, error, data: products,refetch } = useQuery('products', () =>
-        fetch('http://localhost:4000/products',{
+        fetch('https://cryptic-waters-16109.herokuapp.com/products',{
             method:"GET",
         }).then(res =>
             res.json()
@@ -28,12 +28,12 @@ const Products = () => {
     return (
         <>
             <h1 className='text-center text-4xl text-primary font-bold my-10 bg-gray-200 py-6' style={{letterSpacing:'3px'}}> Products</h1>
-            <div class="grid lg:grid-cols-3 gap-4">
+            <div className="grid lg:grid-cols-3 gap-4">
                 {
                   allProducts ? products.products.map(product => <Product key={product.id} refetch={refetch} product={product}></Product>) : products.products.slice(-6).map(product => <Product key={product.id} refetch={refetch} product={product}></Product>)
                 }
             </div>
-            {allProducts ? <button style={{display:"none"}} onClick={handleAllProducts} class="btn btn-wide">See All Products</button> : <button onClick={handleAllProducts} class="btn btn-primary mt-14">See All Products</button>}
+            {allProducts ? <button style={{display:"none"}} onClick={handleAllProducts} className="btn btn-wide">See All Products</button> : <button onClick={handleAllProducts} className="btn btn-primary mt-14">See All Products</button>}
         </>
     );
 };

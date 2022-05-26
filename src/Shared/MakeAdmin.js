@@ -10,7 +10,7 @@ const MakeAdmin = (user) => {
         <Loading></Loading>
     }
     useEffect(() => {
-        fetch(`http://localhost:4000/user/?email=${user?.email}`, {
+        fetch(`https://cryptic-waters-16109.herokuapp.com/user/?email=${user?.email}`, {
             method: "GET",
 
         })

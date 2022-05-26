@@ -14,7 +14,7 @@ const Orders = ({ product, index, refetch, isLoading }) => {
     const deleteButton = (id) => {
         const proced = window.confirm("Are You Agree For Delete ?")
         if (proced) {
-            const url = `http://localhost:4000/products/${id}`
+            const url = `https://cryptic-waters-16109.herokuapp.com/products/${id}`
             fetch(url, {
                 method: "DELETE",
                 headers: {
@@ -24,7 +24,7 @@ const Orders = ({ product, index, refetch, isLoading }) => {
                 .then(res => res.json())
                 .then(data => {
                 })
-                axios.put(`http://localhost:4000/products/${id}`, {
+                axios.put(`https://cryptic-waters-16109.herokuapp.com/products/${id}`, {
                         headers: {
                             "authorization": `${product?.price}`
                         }
@@ -40,19 +40,19 @@ const Orders = ({ product, index, refetch, isLoading }) => {
         <tr>
         <th>
           <label>
-            <input type="checkbox" class="checkbox" />
+            <input type="checkbox" className="checkbox" />
           </label>
         </th>
         <td>
-          <div class="flex items-center space-x-3">
-            <div class="avatar">
-              <div class="mask mask-squircle w-12 h-12">
+          <div className="flex items-center space-x-3">
+            <div className="avatar">
+              <div className="mask mask-squircle w-12 h-12">
                 <img src={product.img} alt="Avatar Tailwind CSS Component" />
               </div>
             </div>
             <div>
-              <div class="font-bold">{product.productname}</div>
-              <div class="text-sm opacity-50 talbeName">Bangladesh</div>
+              <div className="font-bold">{product.productname}</div>
+              <div className="text-sm opacity-50 talbeName">Bangladesh</div>
             </div>
           </div>
         </td>
@@ -62,9 +62,9 @@ const Orders = ({ product, index, refetch, isLoading }) => {
         </td>
         <td>Price: ${product.totalprice}</td>
         <th className='uBtn'>
-        {product.payment === "paid" ? <Link to={''}><td><button disabled readOnly class="btn btn-sm btn-success">Paid</button></td></Link> : <Link to={`/dashboard/payment/${_id}`}><td><button class="btn btn-sm btn-warning">Pay</button></td></Link>}
+        {product.payment === "paid" ? <Link to={''}><td><button disabled readOnly className="btn btn-sm btn-success">Paid</button></td></Link> : <Link to={`/dashboard/payment/${_id}`}><td><button className="btn btn-sm btn-warning">Pay</button></td></Link>}
             <span className='talbeName'>
-            {product.payment === "paid"?<Link to={''}><td><button disabled readOnly onClick={() => deleteButton(_id)} class="btn btn-sm btn-warning" >Cancel</button></td></Link>:<Link to={''}><td><button onClick={() => deleteButton(_id)} class="btn btn-sm bg-red-600" >Cancel</button></td></Link>}
+            {product.payment === "paid"?<Link to={''}><td><button disabled readOnly onClick={() => deleteButton(_id)} className="btn btn-sm btn-warning" >Cancel</button></td></Link>:<Link to={''}><td><button onClick={() => deleteButton(_id)} className="btn btn-sm bg-red-600" >Cancel</button></td></Link>}
             </span>
         </th>
       </tr>

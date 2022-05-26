@@ -24,10 +24,10 @@ const AddProducts = () => {
                         price: price,
                         description: description,
                         img: image,
-                        available: available,
+                        available: +available,
                         Minimumorder: 20
                     }
-                    axios.post("http://localhost:4000/addproducts",productsDetails)
+                    axios.post("https://cryptic-waters-16109.herokuapp.com/addproducts",productsDetails)
                     .then(res=>{
                       toast.success("Product Added Successfull")
                       reset()
@@ -42,52 +42,52 @@ const AddProducts = () => {
     }
     return (
         <>
-            <div class="hero bg-base-200" style={{height:"100vh"}}  >
-                <div class="hero-content cardHead" style={{ width: "60%" }}>
+            <div className="hero bg-base-200" style={{height:"100vh"}}  >
+                <div className="hero-content cardHead" style={{ width: "60%" }}>
 
-                    <div class="card shadow-2xl bg-base-100" style={{ width: "100%" }} data-aos="zoom-in">
+                    <div className="card shadow-2xl bg-base-100" style={{ width: "100%" }} data-aos="zoom-in">
                         <form onSubmit={handleSubmit(onSubmit)}>
-                            <div class="card-body cardBody" style={{width:"500px"}}>
-                                <div class="form-control">
-                                    <label class="label">
-                                        <span class="label-text">Products Name</span>
+                            <div className="card-body cardBody" style={{width:"500px"}}>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Products Name</span>
 
                                     </label>
-                                    <input {...register("name")} type="text" placeholder="Product Name" class="input input-bordered" />
+                                    <input {...register("name")} type="text" placeholder="Product Name" className="input input-bordered" />
                                 </div>
-                                <div class="form-control">
-                                    <label class="label">
-                                        <span class="label-text">Price</span>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Price</span>
 
                                     </label>
-                                    <input {...register("price")} type="number" placeholder="Price" class="input input-bordered" />
+                                    <input {...register("price")} type="number" placeholder="Price" className="input input-bordered" />
 
                                 </div>
-                                <div class="form-control">
-                                    <label class="label">
-                                        <span class="label-text">Product Details</span>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Product Details</span>
 
                                     </label>
-                                    <input {...register("description")} type="text" placeholder="Details" class="input input-bordered" />
+                                    <input {...register("description")} type="text" placeholder="Details" className="input input-bordered" />
 
                                 </div>
-                                <div class="form-control">
-                                    <label class="label">
-                                        <span class="label-text">Available Qty</span>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Available Qty</span>
 
                                     </label>
-                                    <input {...register("available")} type="number" placeholder="available" class="input input-bordered" />
+                                    <input {...register("available")} type="number" placeholder="available" className="input input-bordered" />
 
                                 </div>
-                                <div class="form-control">
-                                    <label class="label">
-                                        <span class="label-text">Upload Image</span>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Upload Image</span>
                                     </label>
-                                    <input {...register("image")} type="file" placeholder="Upload file" class="input input-bordered" />
+                                    <input {...register("image")} type="file" placeholder="Upload file" className="input input-bordered" />
 
                                 </div>
-                                <div class="form-control mt-6">
-                                    <button type='submit' class="btn btn-primary text-white bg-blue-500">Add Product</button>
+                                <div className="form-control mt-6">
+                                    <button type='submit' className="btn btn-primary text-white bg-blue-500">Add Product</button>
                                 </div>
                             </div>
                         </form>

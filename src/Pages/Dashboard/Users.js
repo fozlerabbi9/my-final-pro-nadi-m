@@ -11,7 +11,7 @@ const Users = () => {
     console.log(user);
 
     const { isLoading, error, data:users,refetch } = useQuery('admin', () =>
-     fetch(`http://localhost:4000/users/?email=${user?.email}`,{
+     fetch(`https://cryptic-waters-16109.herokuapp.com/users/?email=${user?.email}`,{
          method:"GET", 
          headers: {
             "authorization": `bearer ${localStorage.getItem("AccessToken")}`
@@ -29,8 +29,8 @@ const Users = () => {
    }
     console.log(users);
     return (
-        <div class="overflow-x-auto w-full">
-            <table class="table w-full">
+        <div className="overflow-x-auto w-full">
+            <table className="table w-full">
                 <thead>
                     <tr>
                         <th></th>

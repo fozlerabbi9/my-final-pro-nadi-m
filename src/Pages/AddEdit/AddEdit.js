@@ -17,7 +17,7 @@ const AddEdit = () => {
     const [updateDone, setUpdateDone] = useState("")
     const [currentUser, setCurrentUser] = useState({})
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
-    axios.get(`http://localhost:4000/user?email=${user?.email}`)
+    axios.get(`https://cryptic-waters-16109.herokuapp.com/user?email=${user?.email}`)
         .then(res => {
             setCurrentUser(res.data);
         })
@@ -50,7 +50,7 @@ const AddEdit = () => {
                                 phone: phone,
                                 img: image
                             }
-                            axios.put(`http://localhost:4000/users/${user?.email}`, userDetails)
+                            axios.put(`https://cryptic-waters-16109.herokuapp.com/users/${user?.email}`, userDetails)
                                 .then(res => {
                                     if (res) {
                                         setUpdateDone("Update Done")
@@ -71,7 +71,7 @@ const AddEdit = () => {
                     phone: phone,
                     img: currentUser?.img
                 }
-                axios.put(`http://localhost:4000/users/${user?.email}`, userDetails)
+                axios.put(`https://cryptic-waters-16109.herokuapp.com/users/${user?.email}`, userDetails)
                     .then(res => {
                         if (res) {
                             setUpdateDone("Update Done")
@@ -102,7 +102,7 @@ const AddEdit = () => {
                                 phone: phone,
                                 img: image
                             }
-                            axios.put(`http://localhost:4000/users/${user?.email}`, userDetails)
+                            axios.put(`https://cryptic-waters-16109.herokuapp.com/users/${user?.email}`, userDetails)
                                 .then(res => {
                                     if (res) {
                                         setUpdateDone("Update Done")
@@ -130,10 +130,10 @@ const AddEdit = () => {
         <>
 
 
-            <div class="hero min-h-screen bg-base-200">
-                <div class="hero-content flex-col lg:flex-row-reverse">
-                    <div class="avatar online">
-                        <div class=" rounded-full" style={{width:"300px"}} data-aos="zoom-out">
+            <div className="hero min-h-screen bg-base-200">
+                <div className="hero-content flex-col lg:flex-row-reverse">
+                    <div className="avatar online">
+                        <div className=" rounded-full" style={{width:"300px"}} data-aos="zoom-out">
                             <img src={user.photoURL ? user.photoURL : currentUser?.img} />
                         </div>
                     </div>
@@ -309,13 +309,13 @@ const AddEdit = () => {
                                                     {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
                                                 </label>
                                             </div>
-                                            <div class="form-control">
-                                                <label class="label">
-                                                    <span class="label-text">Upload Your Image</span>
+                                            <div className="form-control">
+                                                <label className="label">
+                                                    <span className="label-text">Upload Your Image</span>
                                                 </label>
                                                 {!edit ? <input disabled
-                                                    readOnly {...register("image")} type="file" placeholder="Upload file" class="input input-bordered" /> : updateDone ? <input disabled
-                                                        readOnly {...register("image")} type="file" placeholder="Upload file" class="input input-bordered" /> : <input {...register("image")} type="file" placeholder="Upload file" class="input input-bordered" />}
+                                                    readOnly {...register("image")} type="file" placeholder="Upload file" className="input input-bordered" /> : updateDone ? <input disabled
+                                                        readOnly {...register("image")} type="file" placeholder="Upload file" className="input input-bordered" /> : <input {...register("image")} type="file" placeholder="Upload file" className="input input-bordered" />}
 
                                             </div>
                                             <h1 className='text-red-600 font-bold my-5'>{error}</h1>

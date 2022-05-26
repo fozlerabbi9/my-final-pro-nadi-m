@@ -9,7 +9,7 @@ const DeliveryProductStatus = () => {
     const [user, loading] = useAuthState(auth);
     const email = user?.email
     const { isLoading, error, data: products, refetch } = useQuery('service', () =>
-        fetch(`http://localhost:4000/myorders/?email=${email}`,
+        fetch(`https://cryptic-waters-16109.herokuapp.com/myorders/?email=${email}`,
             {
                 method: "GET",
                 headers: {
@@ -29,8 +29,8 @@ const DeliveryProductStatus = () => {
  
     return (
         <div>
-            <div class="overflow-x-auto">
-                <table class="table table-zebra w-full">
+            <div className="overflow-x-auto">
+                <table className="table table-zebra w-full">
 
                     <thead>
                         <tr>
