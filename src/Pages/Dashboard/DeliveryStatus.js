@@ -5,7 +5,7 @@ const DeliveryStatus = ({ product }) => {
     return (
         <tr>
             <th>1</th>
-            <td>{product.name}</td>
+            <td> <img src={product.img} alt="" /> </td>
             <td className='status'><ul class="steps steps-vertical lg:steps-horizontal">
                 <li class="step step-primary">Purchase</li>
                 <li class="step step-primary">Shipping Confirmed</li>
