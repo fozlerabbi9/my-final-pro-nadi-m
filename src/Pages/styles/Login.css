@@ -6,7 +6,7 @@
     border-radius: 20px;
     padding: 40px;
     box-sizing: border-box;
-    background: #ecf0f369;
+    background: #a0a3a5;
     backdrop-filter: blur(10px);
 }
 
@@ -79,7 +79,7 @@ hr{
 .login-container button {
     color: white;
     margin-top: 20px;
-    background: #1da1f2;
+    background:#0664b5;
     height: 40px;
     border-radius: 20px;
     cursor: pointer;
@@ -204,8 +204,7 @@ ion-icon.md.hydrated:hover{
     position: absolute;
     top: -50px;
     left: -100px;
-    background-color: #ff3cac;
-    background-image: linear-gradient(225deg, #27d86c 0%, #26caf8 50%, #c625d0 100%);
+
     z-index: -1;
     transition: transform 0.5s ease;
 }
@@ -338,7 +337,7 @@ ion-icon.md.hydrated:hover{
     margin-top: 15px;
 }
 .addForm{
-    background-image: linear-gradient(45deg, #3e32a8,#e310c7);
+    background: #b7acac40;
     padding-top: 1px;
     padding-bottom: 90px;
 }
@@ -598,5 +597,8 @@ ion-icon.md.hydrated:hover{
         margin-top: 20px;
         margin-bottom: 20px;
         margin-right: 1px;
+    }
+    .cardForMobile{
+        width: 26rem !important;
     }
 }

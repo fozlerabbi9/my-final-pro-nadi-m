@@ -42,10 +42,10 @@ const AddProducts = () => {
     }
     return (
         <>
-            <div class="hero bg-base-200" style={{height:"100vh"}}>
+            <div class="hero bg-base-200" style={{height:"100vh"}}  >
                 <div class="hero-content cardHead" style={{ width: "60%" }}>
 
-                    <div class="card shadow-2xl bg-base-100" style={{ width: "100%" }}>
+                    <div class="card shadow-2xl bg-base-100" style={{ width: "100%" }} data-aos="zoom-in">
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div class="card-body cardBody" style={{width:"500px"}}>
                                 <div class="form-control">

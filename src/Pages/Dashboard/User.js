@@ -49,7 +49,7 @@ const User = ({ user, refetch, index, isLoading }) => {
     }
     return (
 
-        <tr>
+        <tr >
             <th>{index + 1}</th>
             <td>{user.email}</td>
             {Role !== "admin" ? <td><button onClick={Admin} class="btn btn-xs btn-primary">Make Admin</button></td> : <td></td>}

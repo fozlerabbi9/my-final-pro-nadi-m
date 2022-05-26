@@ -22,6 +22,7 @@ import ProtectedPage from './Shared/ProtectedPage';
 import DeliveryProductStatus from './Pages/Dashboard/DeliveryProductStatus';
 import ScrollToTop from './Pages/ScrollToTop/ScrollToTop';
 import NotFound from './Pages/NotFound/NotFound';
+import Blog from './Pages/Blog/Blog';
 
 
 
@@ -34,12 +35,19 @@ function App() {
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<Signup></Signup>}></Route>
-        <Route path='/addreview' element={<AddReview></AddReview>}></Route>
-        <Route path="/addedit" element={<AddEdit></AddEdit>}></Route>
+        <Route path='/blog' element={<Blog></Blog>}></Route>
+        <Route path='/addreview' element={<ProtectedPage>
+          <AddReview></AddReview>
+        </ProtectedPage>}></Route>
+        <Route path="/addedit" element={<ProtectedPage>
+          <AddEdit></AddEdit>
+        </ProtectedPage>}></Route>
         <Route path='/orderproducts/:id' element={<ProtectedPage>
           <OrderProducts></OrderProducts>
         </ProtectedPage>}></Route>
-        <Route path='/dashboard' element={<Dashboard></Dashboard>}>
+        <Route path='/dashboard' element={<ProtectedPage>
+          <Dashboard></Dashboard>
+        </ProtectedPage>}>
           <Route path='/dashboard/addproduct' element={<Requireauth>
             <AddProducts></AddProducts>
           </Requireauth>}></Route>
@@ -47,6 +55,7 @@ function App() {
             <Users></Users>
           </Requireauth>}></Route>
           <Route path='/dashboard/myorders' element={<Myorders></Myorders>}></Route>
+          <Route path='/dashboard/addedit' element={<AddEdit></AddEdit>}></Route>
           <Route path='/dashboard/deliverystatus' element={<DeliveryProductStatus></DeliveryProductStatus>}></Route>
           <Route path='/dashboard/totalorder' element={<Requireauth>
             <TotalOrders></TotalOrders>

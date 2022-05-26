@@ -22,7 +22,7 @@ const ManageAllProduct = ({products,isLoading,refetch}) => {
 }
 
     return (
-        <tr>
+        <tr >
         <th>
           <label>
             <input type="checkbox" class="checkbox" />

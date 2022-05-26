@@ -20,20 +20,18 @@ const Payment = () => {
     console.log(product)
     return (
         <div>
-            <div class="hero min-h-screen ">
+            <div class="hero min-h-screen" style={{background:"whitesmoke"}} >
                 <div class="hero-content" style={{ flexDirection: "column" }}>
 
-                    <div class="card w-96 bg-base-100 shadow-xl">
+                    <div class="card w-96 bg-base-100 shadow-xl" data-aos="fade-down">
                         <div class="card-body">
-                            <h2 class="card-title">{`Your service ${product.result.productname}`}</h2>
-                            <p>If a dog chews shoes whose shoes does he choose?</p>
-                            <div class="card-actions justify-end">
-                                <button class="btn btn-primary">Buy Now</button>
-                            </div>
+                            <h2 class="card-title text-primary">{`Product Name:  ${product.result.productname}`}</h2>
+                            <p style={{textAlign:"start"}}>{`Total Quentity - ${product.result.totalquentity} pcs`}</p>
+                            <p style={{textAlign:"start"}}>{`Total Price - $${product.result.totalprice}`}</p>
                         </div>
                     </div>
                     <div>
-                        <div class="card w-96 bg-base-100 shadow-xl">
+                        <div class="card w-96 bg-base-100 shadow-xl" data-aos="fade-up">
                             <div class="card-body">
                                 <Elements stripe={stripePromise}>
                                     <CheckoutForm product={product}></CheckoutForm>

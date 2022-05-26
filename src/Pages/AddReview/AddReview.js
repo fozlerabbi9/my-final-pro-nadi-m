@@ -41,7 +41,7 @@ const AddProducts = () => {
             <div class="hero bg-base-200">
                 <div class="hero-content orderCard" style={{ width: "40%" }}>
 
-                    <div class="card shadow-2xl bg-base-100" style={{ width: "100%" }}>
+                    <div class="card shadow-2xl bg-base-100" style={{ width: "100%" }} data-aos="zoom-out-up">
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div class="card-body">
                                 <div class="form-control">

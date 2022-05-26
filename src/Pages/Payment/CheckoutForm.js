@@ -62,7 +62,7 @@ const CheckoutForm = ({product}) => {
                 }}
             />
            
-            <button  className='btn mt-4 btn-primary' type="submit" disabled={!stripe}>
+            <button disabled={product.result.payment==="paid"}  className='btn mt-4 btn-primary bg-blue-500' type="submit">
                 Pay
             </button>
             <p><small className='text-red-700'>{cardError}</small></p>

@@ -7,7 +7,7 @@ const OurService = () => {
             <section class="services-bg py-16 my-5 text-gray-500">
                 <div>
                     <div >
-                        <div className='grid grid-cols-2 gap-20'>
+                        <div className='grid grid-cols-2 gap-20' data-aos="fade-up">
                             <div class="col">
                                 <h4 style={{textAlign:"start", marginLeft:"80px"}} className="text-2xl font-bold serviceMb text-black">SERVICE & LINKS</h4>
                                 <hr />

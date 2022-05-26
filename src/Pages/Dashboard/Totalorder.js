@@ -35,7 +35,7 @@ const Totalorder = ({ product, index }) => {
     }
     console.log(product.shipping);
     return (
-        <tr>
+        <tr >
             <th className='tableNumberr'>{index + 1}</th>
             <td className='talbeName'>{product.productname}</td>
             <td className='tableQty'>{product.totalquentity}</td>

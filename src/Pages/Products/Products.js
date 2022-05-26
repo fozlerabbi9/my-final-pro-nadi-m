@@ -27,7 +27,7 @@ const Products = () => {
     
     return (
         <>
-            <h1 className='text-center text-4xl text-primary font-bold my-10'> / Products \</h1>
+            <h1 className='text-center text-4xl text-primary font-bold my-10 bg-gray-200 py-6' style={{letterSpacing:'3px'}}> Products</h1>
             <div class="grid lg:grid-cols-3 gap-4">
                 {
                   allProducts ? products.products.map(product => <Product key={product.id} refetch={refetch} product={product}></Product>) : products.products.slice(-6).map(product => <Product key={product.id} refetch={refetch} product={product}></Product>)

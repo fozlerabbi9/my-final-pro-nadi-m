@@ -27,7 +27,7 @@ const OrderProducts = () => {
             res.json()
         )
     )
-    if (isLoading || !currentUser) {
+    if (isLoading) {
 
         return <Loading></Loading>
     }
@@ -78,7 +78,7 @@ const OrderProducts = () => {
                     axios.post("http://localhost:4000/orders", fulldetails)
                         .then(res => {
                             console.log(res);
-                            toast.success("Product Booking Confirm")
+                            toast.success("Product Booking Confirmed, Please go to my order page and pay now !!")
                             reset()
                             setPrice((+ product.result.minimum) * (+ product.result.price))
                         })
@@ -104,7 +104,7 @@ const OrderProducts = () => {
         <div class="hero min-h-screen bg-base-200">
             <div class="hero-content flex-col lg:flex-row">
                 <div class="card bg-base-100 shadow-xl orderCard" style={{ height: '100%',width:"36rem" }}>
-                    <figure class="px-10 pt-10">
+                    <figure class="px-10 pt-10" data-aos="zoom-in">
                         <img src={product?.result?.img} alt="Shoes" class="rounded-xl" />
                     </figure>
                     <div class="card-body items-center text-center">
@@ -115,7 +115,7 @@ const OrderProducts = () => {
                         {product?.result?.available<=0? <p className='text-red-600 font-bold'>Stock Out</p> : <p>Stock: {product?.result?.available} Pcs</p>}
                     </div>
                 </div>
-                <div class="hero bg-base-200">
+                <div class="hero bg-base-200" data-aos="zoom-out">
                     <div class="hero-content orderCard" style={{width:"570px"}}>
                    
                         <div class="card shadow-2xl bg-base-100" style={{ width: "100%" }}>
@@ -166,7 +166,7 @@ const OrderProducts = () => {
                                     </div>
                                     <div class="form-control">
                                         <label class="label">
-                                            <span class="label-text">Total Price</span>
+                                            <span class="label-text">Total Price $</span>
 
                                         </label>
                                         <input {...register("Price")} type="number" value={price} readOnly disabled class="input input-bordered" />

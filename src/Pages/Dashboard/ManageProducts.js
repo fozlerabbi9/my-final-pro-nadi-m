@@ -17,7 +17,7 @@ const ManageProducts = () => {
     }
 
     return (
-        <div class="overflow-x-auto w-full">
+        <div class="w-full" style={{overflowX:"hidden"}}>
             <h1 className='text-3xl text-secondary mt-7 font-bold'>Total Stock Products: {products.products.length}</h1>
             <table class="table w-full">
                 <thead>

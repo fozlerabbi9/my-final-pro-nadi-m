@@ -24,7 +24,7 @@ const Myorders = () => {
     )
     // refetch()
 
-    if (isLoading && loading) {
+    if (isLoading || loading) {
 
         return <Loading></Loading>
     }
@@ -32,7 +32,7 @@ const Myorders = () => {
 
     return (
         <div>
-            <div class="overflow-x-auto w-full">
+            <div class="overflow-x-auto w-full" data-aos="zoom-out">
                 <h1 className='text-3xl text-secondary mt-7 font-bold'>My Total Orders: {products?.result?.length} Pcs</h1>
                 <table class="table w-full">
                     {products?.result?.length === 0 ? <h1 className='text-4xl text-center font-bold mb-32 mt-20'>Your Haven't Order Any Product</h1> :

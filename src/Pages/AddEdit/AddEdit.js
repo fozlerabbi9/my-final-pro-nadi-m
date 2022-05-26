@@ -133,14 +133,14 @@ const AddEdit = () => {
             <div class="hero min-h-screen bg-base-200">
                 <div class="hero-content flex-col lg:flex-row-reverse">
                     <div class="avatar online">
-                        <div class=" rounded-full" style={{width:"300px"}}>
+                        <div class=" rounded-full" style={{width:"300px"}} data-aos="zoom-out">
                             <img src={user.photoURL ? user.photoURL : currentUser?.img} />
                         </div>
                     </div>
 
                     <div>
-                        <div className='flex h-screen justify-center items-center'>
-                            <div className="card w-96 bg-base-100 shadow-xl" style={{ width: "800px" }}>
+                        <div className='flex h-screen justify-center items-center' data-aos="zoom-in" >
+                            <div className="card w-96 bg-base-100 shadow-xl" style={{ width: "764px" }}>
                                 <div className="card-body">
                                     <h2 className="text-center text-2xl font-bold">Profile Setting</h2>
                                     <form onSubmit={handleSubmit(onSubmit)}>
