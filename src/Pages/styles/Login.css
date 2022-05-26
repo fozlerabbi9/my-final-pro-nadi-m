@@ -29,7 +29,15 @@
     color: white;
     letter-spacing: 1px;
 }
-
+.services-bg{
+    background: #f2f2f2
+}
+hr{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
 .login-form {
     text-align: left;
     margin-top: 30px;
@@ -567,16 +575,28 @@ ion-icon.md.hydrated:hover{
     .talbeName{
         display: none;
     }
-    .tableQty{
-        
-    }
-    .talbePrice{
-        
+    .orderCard{
+        width: 22rem !important;
     }
     .pName{
         display: none;
     }
     .cardHead, .cardBody{
         width: 90% !important;
+    }
+    .serviceMb{
+        margin-left:15px !important;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 18px;
+    }
+    .serviceText{
+        margin-left: 30px !important;
+    }
+    .serviceText2{
+        margin-left: 0px !important;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-right: 1px;
     }
 }

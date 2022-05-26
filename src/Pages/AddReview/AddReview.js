@@ -39,7 +39,7 @@ const AddProducts = () => {
     return (
         <>
             <div class="hero bg-base-200">
-                <div class="hero-content" style={{ width: "40%" }}>
+                <div class="hero-content orderCard" style={{ width: "40%" }}>
 
                     <div class="card shadow-2xl bg-base-100" style={{ width: "100%" }}>
                         <form onSubmit={handleSubmit(onSubmit)}>
@@ -75,7 +75,7 @@ const AddProducts = () => {
 
                                 </div>
                                 <div class="form-control mt-6">
-                                    <button type='submit' class="btn btn-primary">Add Review</button>
+                                    <button type='submit' class="btn btn-primary bg-blue-600">Add Review</button>
                                 </div>
                             </div>
                         </form>

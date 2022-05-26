@@ -49,8 +49,8 @@ const Navbar = () => {
         <li><Link to="/blog">Blog</Link></li>
         <li><Link to="/porfolio">Portfolio</Link></li>
         {user && <li><Link to="/dashboard">Dashboard</Link></li>}
-        {!users.Role==="admin" && <li><Link to="/myorders">My Orders</Link></li>}
-        {!users.Role==="admin"&&<li><Link to="/addreview">Add A Review</Link></li>}
+        {users.Role==="admin" ? <li style={{display:"none"}}><Link to="/myorders">My Orders</Link></li> :<li><Link to="/myorders">My Orders</Link></li> }
+        {users.Role==="admin" ? <li style={{display:"none"}}><Link to="/addreview">Add A Review</Link></li> : <li><Link to="/addreview">Add A Review</Link></li>}
         {user && <li><Link to="/addedit">My Profile</Link></li>}
         <li className="nav-item">
             {user ? <Link onClick={logout} to={"/login"}>Sign Out</Link> : <Link to={"/login"}>Login</Link>}

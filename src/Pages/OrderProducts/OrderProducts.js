@@ -27,7 +27,7 @@ const OrderProducts = () => {
             res.json()
         )
     )
-    if (isLoading) {
+    if (isLoading || !currentUser) {
 
         return <Loading></Loading>
     }
@@ -98,12 +98,12 @@ const OrderProducts = () => {
         setPrice(price * inputQuentity)
         setInputQuentity(inputQuentity)
     }
- 
+    
 
     return (
         <div class="hero min-h-screen bg-base-200">
             <div class="hero-content flex-col lg:flex-row">
-                <div class="card bg-base-100 shadow-xl" style={{ height: '100%',width:"36rem" }}>
+                <div class="card bg-base-100 shadow-xl orderCard" style={{ height: '100%',width:"36rem" }}>
                     <figure class="px-10 pt-10">
                         <img src={product?.result?.img} alt="Shoes" class="rounded-xl" />
                     </figure>
@@ -116,7 +116,7 @@ const OrderProducts = () => {
                     </div>
                 </div>
                 <div class="hero bg-base-200">
-                    <div class="hero-content" style={{width:"570px"}}>
+                    <div class="hero-content orderCard" style={{width:"570px"}}>
                    
                         <div class="card shadow-2xl bg-base-100" style={{ width: "100%" }}>
                             <form onSubmit={handleSubmit(onSubmit)}>
@@ -152,7 +152,7 @@ const OrderProducts = () => {
                                             <span class="label-text">Phone Number</span>
 
                                         </label>
-                                        <input {...register("phone")} type="number" value={currentUser?.phone} disabled readOnly placeholder="description" class="input input-bordered" />
+                                        {<input {...register("phone")} type="number" value={currentUser?.phone} disabled readOnly placeholder="description" class="input input-bordered" />}
                                         
 
                                     </div>
@@ -173,7 +173,7 @@ const OrderProducts = () => {
 
                                     </div>
                                     {<div  class="form-control mt-6">
-                                        <button disabled={product?.result?.available==0} type='submit' class="btn btn-primary bg-blue-500" >Place Order</button>
+                                        <button disabled={inputQuentity<20} type='submit' class="btn btn-primary bg-blue-500" >Place Order</button>
                                     </div>}
                                 </div>
                             </form>
