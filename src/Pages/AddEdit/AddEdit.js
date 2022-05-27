@@ -270,7 +270,7 @@ const AddEdit = () => {
                                                 </label>
                                                 {!edit ? <input
                                                     type="number"
-                                                    placeholder="Your Name"
+                                                    placeholder="Your Phone Number"
                                                     value={currentUser?.phone}
                                                     disabled
                                                     readOnly
@@ -283,7 +283,7 @@ const AddEdit = () => {
                                                     })}
                                                 /> : updateDone ? <input
                                                     type="number"
-                                                    placeholder="Your Name"
+                                                    placeholder="Your Phone Number"
                                                     value={currentUser?.phone}
                                                     disabled
                                                     readOnly
@@ -296,7 +296,7 @@ const AddEdit = () => {
                                                     })}
                                                 /> : <input
                                                     type="number"
-                                                    placeholder="Your Name"
+                                                    placeholder="Your Phone Number"
                                                     className="input input-bordered w-full max-w-xs"
                                                     {...register("phone", {
                                                         required: {

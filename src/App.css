@@ -4,9 +4,7 @@
 #root{
   font-family: 'Poppins', sans-serif;
 }
-body{
-  background-color: white !important;
-}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
