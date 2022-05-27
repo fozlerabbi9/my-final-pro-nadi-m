@@ -3,8 +3,9 @@ import logo from "../Images/logo.png"
 import ScrollToTop from "react-scroll-to-top";
 const Footer = () => {
     return (
+        <>
         <div className='totalFooter'>
-            <ScrollToTop smooth />
+            {/* <ScrollToTop smooth /> */}
             <footer className="footer p-10 bg-base-200 text-base-content">
                 <div>
 
@@ -41,6 +42,7 @@ const Footer = () => {
             <hr className='mt-5' />
             <small className='text-center copyRight'>&copy; 2022 All Right Reserved Mo Store</small>
         </div>
+        </>
     );
 };
 
