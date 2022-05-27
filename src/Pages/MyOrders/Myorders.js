@@ -45,7 +45,7 @@ const Myorders = () => {
                                 </th>
                                 <th>Products Name</th>
                                 <th className='talbeName'>Total Qty</th>
-                                <th>Total Price</th>
+                                <th className='ordrForMobile'>Total Price</th>
                                 <th style={{ width: "230px" }}>Payment</th>
                                 <th className='talbeName'></th>
                             </tr>

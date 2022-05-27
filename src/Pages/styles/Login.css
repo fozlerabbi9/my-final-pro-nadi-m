@@ -581,7 +581,7 @@ ion-icon.md.hydrated:hover{
         display: none;
     }
     .orderCard{
-        width: 22rem !important;
+        width: 20rem !important;
     }
     .pName{
         display: none;
@@ -605,6 +605,19 @@ ion-icon.md.hydrated:hover{
         margin-right: 1px;
     }
     .cardForMobile{
-        width: 26rem !important;
+        width: 24rem !important;
+    }
+    .form-control{
+        max-width: 15rem !important;
+    }
+    .editBtn{
+        flex-direction: column;
+    }
+    .ordrForMobile{
+        display: none;
+    }
+    .shippingDone{
+        display: flex;
+        flex-direction: column;
     }
 }

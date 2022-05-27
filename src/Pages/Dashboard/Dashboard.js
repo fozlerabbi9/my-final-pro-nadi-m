@@ -13,7 +13,7 @@ const Dashboard = () => {
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col ">
 
-        {users?.Role === "admin" ? <h1 className='text-4xl text-primary font-bold' data-aos="fade-down">Welcome To Admin Pannel</h1> : <h1 className='text-4xl text-primary font-bold' data-aos="fade-down">Welcome To Dashboard</h1>}
+        {users?.Role === "admin" ? <h1 className='text-4xl text-primary font-bold my-6'>Welcome To Admin Pannel</h1> : <h1 className='text-4xl text-primary font-bold my-6' >Welcome To Dashboard</h1>}
         <Outlet className="w-full"></Outlet>
         
 

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
-import { useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Loading from '../../Shared/Loading';
@@ -17,6 +17,7 @@ const OrderProducts = () => {
     const [inputQuentity, setInputQuentity] = useState(0)
     const { register, handleSubmit, reset } = useForm();
     const { id } = useParams()
+    const navigate = useNavigate()
     const [currentUser, setCurrentUser] = useState({})
     axios.get(`https://cryptic-waters-16109.herokuapp.com/user?email=${user?.email}`)
         .then(res => {
@@ -30,6 +31,11 @@ const OrderProducts = () => {
     if (isLoading) {
 
         return <Loading></Loading>
+    }
+
+
+    const redirect=()=>{
+        return navigate("/dashboard/myorders")
     }
 
     const onSubmit = data => {
@@ -78,8 +84,9 @@ const OrderProducts = () => {
                     axios.post("https://cryptic-waters-16109.herokuapp.com/orders", fulldetails)
                         .then(res => {
                             console.log(res);
-                            toast.success("Product Booking Confirmed, Please go to my order page and pay now !!")
+                            toast.success("Product Booking Confirmed, Please pay now !!")
                             reset()
+                            redirect()
                             setPrice((+ product.result.minimum) * (+ product.result.price))
                         })
                     }
@@ -89,7 +96,6 @@ const OrderProducts = () => {
             
         
     }
-    
 
     const priceUpdate = (event) => {
         console.log( + event.target.value)

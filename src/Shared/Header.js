@@ -40,6 +40,20 @@ const Navbar = () => {
         }
 
     }
+
+    function Admin(){
+        if(!user){
+            return  <li style={{display:"none"}}><Link to=''>Dashboard</Link></li>
+        }
+
+        if(users.Role==="admin"){
+           return <li><Link to="/dashboard/totalorder">Dashboard</Link></li>
+        }
+        if( users || !users.Role && !users.Role==="admin"){
+            return <li><Link to="/dashboard/myorders">Dashboard</Link></li>
+        }
+    }
+
     const logout = () => {
         signOut(auth);
         localStorage.removeItem("AccessToken")
@@ -48,7 +62,9 @@ const Navbar = () => {
         <li><Link to="/">Home</Link></li>
         <li><Link to="/blog">Blog</Link></li>
         <li><Link to="/portfolio">My Portfolio</Link></li>
-        {user && <li><Link to="/dashboard">Dashboard</Link></li>}
+        {Admin()}
+        {/* {!users.Role==="admin" ? <li><Link to="/dashboard/myorders">Dashboard</Link></li> : users.Role==="admin" ? <li><Link to="/dashboard/totalorder">Dashboard</Link></li>:<li style={{display:"none"}}><Link to="/dashboard/totalorder">Dashboard</Link></li>} */}
+
         {users.Role==="admin" ? <li style={{display:"none"}}><Link to="/myorders">My Orders</Link></li> : !user ?  <li style={{display:"none"}}><Link to="/myorders">My Orders</Link></li> : <li><Link to="/myorders">My Orders</Link></li> }
         {users.Role==="admin" ? <li style={{display:"none"}}><Link to="/addreview">Add A Review</Link></li> : !user ? <li style={{display:"none"}}><Link to="/addreview">Add A Review</Link></li> : <li><Link to="/addreview">Add A Review</Link></li>}
         {user && <li><Link to="/addedit">My Profile</Link></li>}
@@ -61,6 +77,7 @@ const Navbar = () => {
         {userProfile()}
 
     </>
+    console.log(users);
     return (
         <div className="navbar bg-gray-200" style={{position:"sticky",top:'0', zIndex:"3"}}>
             <div className="navbar-start">
@@ -72,7 +89,7 @@ const Navbar = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <Link to={'/'}><a className="btn btn-ghost normal-case text-xl"> <span className='font-bold text-3xl text-primary mr-2'>Mo</span>Store</a></Link>
+                <Link to={'/'}><a className="btn btn-ghost normal-case text-xl"> <span className='font-bold text-3xl text-primary mr-2'>Mo</span> <span className='ordrForMobile'>Store</span> </a></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">

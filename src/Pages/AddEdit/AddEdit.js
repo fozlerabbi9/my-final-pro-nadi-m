@@ -140,7 +140,7 @@ const AddEdit = () => {
 
                     <div>
                         <div className='flex h-screen justify-center items-center' data-aos="zoom-in" >
-                            <div className="card w-96 bg-base-100 shadow-xl" style={{ width: "764px" }}>
+                            <div className="card w-96 bg-base-100 shadow-xl orderCard" style={{ width: "764px" }}>
                                 <div className="card-body">
                                     <h2 className="text-center text-2xl font-bold">Profile Setting</h2>
                                     <form onSubmit={handleSubmit(onSubmit)}>
@@ -320,7 +320,7 @@ const AddEdit = () => {
                                             </div>
                                             <h1 className='text-red-600 font-bold my-5'>{error}</h1>
                                         </div>
-                                        <div className='my-10 flex' style={{ justifyContent: "space-between" }}>
+                                        <div className='my-10 flex editBtn' style={{ justifyContent: "space-between" }}>
                                             {!edit ? <input disabled readOnly className='btn w-full max-w-xs text-primary' type="submit" value="Update Profile" /> : updateDone ? <input disabled readOnly className='btn w-full max-w-xs text-primary' type="submit" value="Update Profile" /> : <input className='btn w-full max-w-xs text-primary btn-primary text-white bg-blue-500' type="submit" value="Update Profile" />}
                                             <button onClick={handleProfileEdit} className='btn btn-primary'> edit</button>
                                         </div>

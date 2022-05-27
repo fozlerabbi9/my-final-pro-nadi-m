@@ -2,6 +2,7 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { success } from 'daisyui/src/colors';
 import React, { useState } from 'react';
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 const axios = require('axios').default;
 
 const CheckoutForm = ({product}) => {
@@ -11,6 +12,7 @@ const CheckoutForm = ({product}) => {
     const[seccess,setSuccess] = useState('')
     const stripe = useStripe();
     const elements = useElements();
+    const navigate = useNavigate()
     const handleSubmit = async(event)=>{
         event.preventDefault();
 

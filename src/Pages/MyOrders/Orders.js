@@ -5,39 +5,49 @@ import axios from 'axios';
 
 
 const Orders = ({ product, index, refetch, isLoading }) => {
-    const { _id } = product
-    console.log(product);
-    if (isLoading) {
+  const { _id } = product
+  console.log(product);
+  if (isLoading) {
 
-        return <Loading></Loading>
-    }
-    const deleteButton = (id) => {
-        const proced = window.confirm("Are You Agree For Delete ?")
-        if (proced) {
-            const url = `https://cryptic-waters-16109.herokuapp.com/products/${id}`
-            fetch(url, {
-                method: "DELETE",
-                headers: {
-                    "authorization": `bearer ${localStorage.getItem("AccessToken")}`
-                }
-            })
-                .then(res => res.json())
-                .then(data => {
-                })
-                axios.put(`https://cryptic-waters-16109.herokuapp.com/products/${id}`, {
-                        headers: {
-                            "authorization": `${product?.price}`
-                        }
-                    })
-                        .then(res => {
-                            console.log(res);
-
-                        })
+    return <Loading></Loading>
+  }
+  const deleteButton = (id) => {
+    const proced = window.confirm("Are You Agree For Delete ?")
+    if (proced) {
+      const url = `https://cryptic-waters-16109.herokuapp.com/products/${id}`
+      fetch(url, {
+        method: "DELETE",
+        headers: {
+          "authorization": `bearer ${localStorage.getItem("AccessToken")}`
         }
+      })
+        .then(res => res.json())
+        .then(data => {
+        })
+      axios.put(`https://cryptic-waters-16109.herokuapp.com/products/${id}`, {
+        headers: {
+          "authorization": `${product?.price}`
+        }
+      })
+        .then(res => {
+          console.log(res);
+
+        })
     }
-    return (
-        <>
-        <tr>
+  }
+
+  const ShippingConfirm = () => {
+    if (product.shipping === "confirm" && product.payment === 'paid') {
+      return <h1 className='text-success'><span className='shippingDone'><span>Shipping</span><span>Confirmed</span> </span></h1>
+    }
+    if (product.payment === 'paid' && !product.shipping) {
+      return <h1 className='text-warning'><span className='shippingDone'><span>Waiting For</span><span>Shipping</span></span></h1>
+    }
+
+  }
+  return (
+    <>
+      <tr>
         <th>
           <label>
             <input type="checkbox" className="checkbox" />
@@ -57,20 +67,21 @@ const Orders = ({ product, index, refetch, isLoading }) => {
           </div>
         </td>
         <td className='talbeName'>
-        {product.totalquentity}
-          <br/>
+          {product.totalquentity}
+          <br />
         </td>
-        <td>Price: ${product.totalprice}</td>
-        <th className='uBtn'>
-        {product.payment === "paid" ? <Link to={''}><td><button disabled readOnly className="btn btn-sm btn-success">Paid</button></td></Link> : <Link to={`/dashboard/payment/${_id}`}><td><button className="btn btn-sm btn-warning">Pay</button></td></Link>}
+        <td className='ordrForMobile'>Price: ${product.totalprice}</td>
+          <th className='uBtn'>
+            {ShippingConfirm()}
+            {product.payment === "paid" ? <Link to={''}><td><button disabled readOnly className="btn btn-sm btn-success">Paid</button></td></Link> : <Link to={`/dashboard/payment/${_id}`}><td><button className="btn btn-sm btn-warning">Pay</button></td></Link>}
             <span className='talbeName'>
-            {product.payment === "paid"?<Link to={''}><td><button disabled readOnly onClick={() => deleteButton(_id)} className="btn btn-sm btn-warning" >Cancel</button></td></Link>:<Link to={''}><td><button onClick={() => deleteButton(_id)} className="btn btn-sm bg-red-600" >Cancel</button></td></Link>}
+              {product.payment === "paid" ? <Link to={''}><td><button disabled readOnly onClick={() => deleteButton(_id)} className="btn btn-sm btn-warning" >Cancel</button></td></Link> : <Link to={''}><td><button onClick={() => deleteButton(_id)} className="btn btn-sm bg-red-600" >Cancel</button></td></Link>}
             </span>
-        </th>
+          </th>
       </tr>
-        </>
+    </>
 
-    );
+  );
 };
 
 export default Orders;
