@@ -14,6 +14,7 @@ module.exports = {
           "base-100": "#ffffff",
         },
       },
+      "light",
       // "dark",
       // "cupcake",
     ],
