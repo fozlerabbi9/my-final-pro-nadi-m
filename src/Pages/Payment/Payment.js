@@ -23,7 +23,7 @@ const Payment = () => {
             <div className="hero min-h-screen" style={{background:"whitesmoke"}} >
                 <div className="hero-content" style={{ flexDirection: "column" }}>
 
-                    <div className="card w-96 bg-base-100 shadow-xl" data-aos="fade-down">
+                    <div className="card w-96 bg-base-100 shadow-xl orderCard" data-aos="fade-down">
                         <div className="card-body">
                             <h2 className="card-title text-primary">{`Product Name:  ${product.result.productname}`}</h2>
                             <p style={{textAlign:"start"}}>{`Total Quentity - ${product.result.totalquentity} pcs`}</p>
@@ -31,7 +31,7 @@ const Payment = () => {
                         </div>
                     </div>
                     <div>
-                        <div className="card w-96 bg-base-100 shadow-xl" data-aos="fade-up">
+                        <div className="card w-96 bg-base-100 shadow-xl orderCard" data-aos="fade-up">
                             <div className="card-body">
                                 <Elements stripe={stripePromise}>
                                     <CheckoutForm product={product}></CheckoutForm>

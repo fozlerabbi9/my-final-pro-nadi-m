@@ -574,8 +574,11 @@ ion-icon.md.hydrated:hover{
     .blogCard{
         height: 700px;
     }
-    .tableNumberr{
-
+    .styles_scroll-to-top__2A70v{
+        margin: auto !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
     }
     .talbeName{
         display: none;

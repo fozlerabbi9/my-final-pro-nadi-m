@@ -1,8 +1,10 @@
 import React from 'react';
 import logo from "../Images/logo.png"
+import ScrollToTop from "react-scroll-to-top";
 const Footer = () => {
     return (
         <div className='totalFooter'>
+            <ScrollToTop smooth />
             <footer className="footer p-10 bg-base-200 text-base-content">
                 <div>
 

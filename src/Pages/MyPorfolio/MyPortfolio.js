@@ -23,7 +23,13 @@ const MyPortfolio = () => {
                     <li className='ml-8' style={{textAlign:"start"}} >Bootstrap</li>
                     <li className='ml-8' style={{textAlign:"start"}} >Tailwind CSS</li>
                     <p style={{textAlign:"start"}} className="px-6 mt-6 mb-2 text-2xl font-bold">My Projects Link: </p>
-                    <p>https://walton-werehouse.web.app</p>
+                    <li className='ml-8' style={{textAlign:"start"}}>
+                    <a target="_blank" href="https://walton-werehouse.web.app">Walton WareHouse</a>
+                    </li>
+                    <li className='ml-8' style={{textAlign:"start"}}>
+                    <a target="_blank" href="https://mo-store-819d7.web.app">Mo-Store</a>
+                    </li>
+                    
                 </div>
             </div>
         </div>
