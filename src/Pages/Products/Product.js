@@ -6,7 +6,7 @@ const Product = ({ product, refetch }) => {
     return (
         <div className='flex justify-center'>
 
-            <div className="card perItem w-96 bg-base-100 shadow-xl" style={{ height: '100%' }} data-aos="fade-up">
+            <div className="card orderCard perItem w-96 bg-base-100 shadow-xl" style={{ height: '100%' }} data-aos="fade-up">
                 <figure className="px-10 pt-10">
                     <img src={product.img} alt="Shoes" className="rounded-xl" style={{width:"220px"}} />
                 </figure>
