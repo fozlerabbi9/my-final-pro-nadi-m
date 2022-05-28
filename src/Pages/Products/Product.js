@@ -16,7 +16,7 @@ const Product = ({ product, refetch }) => {
                     Name: {product.name}
                        {product.available === 0 ? <div className="badge badge-secondary">Stock Out</div> : <div className="badge badge-primary">Available</div> }
                     </h2>
-                    <p style={{textAlign:"start"}}> <span className='font-bold'>Details:</span>{product.description}</p>
+                    <p style={{textAlign:"start"}}> <span className='font-bold'>Details:</span> {product.description}</p>
                     <p style={{textAlign:"start"}}> <span className='font-bold'>Price:</span> ${product.price}</p>
                     <p style={{textAlign:"start"}}> <span className='font-bold'>Minimum Order:</span> {product.Minimumorder} Pcs</p>
                     {product.available === 0 ? <span className='text-red-600 font-bold'>Stock Out</span> : <p className='font-bold'>Stock: {product.available} Pcs</p>}
